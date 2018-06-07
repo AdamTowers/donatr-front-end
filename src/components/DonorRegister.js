@@ -17,7 +17,14 @@ export default class UserRegister extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.onSubmit(this.state.username, this.state.password, this.props.history.push)
+    this.props.onSubmit(
+      this.state.username,
+      this.state.first_name,
+      this.state.last_name,
+      this.state.email, 
+      this.state.password,
+      this.props.history.push
+    )
   }
 
   render() {
@@ -31,13 +38,34 @@ export default class UserRegister extends Component {
           onChange={(event) => this.handleChange(event)}
         />
         <input
+          type='text'
+          name='first_name'
+          value={this.state.first_name}
+          placeholder='First name'
+          onChange={(event) => this.handleChange(event)}
+        />
+        <input
+          type='text'
+          name='last_name'
+          value={this.state.last_name}
+          placeholder='Last name'
+          onChange={(event) => this.handleChange(event)}
+        />
+        <input
+          type='text'
+          name='email'
+          value={this.state.email}
+          placeholder='Email'
+          onChange={(event) => this.handleChange(event)}
+        />
+        <input
           type='password'
           name='password'
           value={this.state.password}
           placeholder='Password'
           onChange={(event) => this.handleChange(event)}
         />
-        <input type='submit' />
+      <input type='submit' value='Sign Up'/>
       </form>
     )
   }

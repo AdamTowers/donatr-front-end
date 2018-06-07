@@ -25,7 +25,7 @@ class App extends Component {
     callback("/")
   }
 
-  register = (username, first_name, last_name, email, password, callback) => {
+  donorRegister = (username, first_name, last_name, email, password, callback) => {
     fetch('http://localhost:3000/api/v1/donors', {
       method: 'POST',
       headers: {
@@ -50,8 +50,8 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path='/' component={Home} />
-          <Route path='/login' render={(props) => <DonorLogin onSubmit={this.login} {...props} />} />
-          <Route path='/register' render={(props) => <DonorRegister onSubmit={this.login} {...props} />} />
+          <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
+          <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
         </div>
       </Router>
     );
