@@ -5,7 +5,7 @@ import DonorLogin from  './components/DonorLogin'
 import DonorRegister from  './components/DonorRegister'
 
 class App extends Component {
-  login = (username, password, callback) => {
+  donorLogin = (username, password, callback) => {
     fetch('http://localhost:3000/api/v1/donor_sessions', {
       method: 'POST',
       headers: {
