@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
-export default class UserLogin extends Component {
+export default class UserRegister extends Component {
   state = {
     username: '',
+    first_name: '',
+    last_name: '',
+    email: '',
     password: ''
   }
 
