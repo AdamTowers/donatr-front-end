@@ -1,11 +1,52 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
+import Home from './components/Home'
+import UserLogin from  './components/UserLogin'
 
 class App extends Component {
+  login = (username, password, callback) => {
+    fetch('http://localhost:3000/api/v1/donor_sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    })
+    .then(res => res.json())
+    .then(json => {
+      localStorage.setItem('token', json.token)
+      localStorage.setItem('username', json.username)
+      localStorage.setItem('user_id', json.user_id)
+      localStorage.setItem('user_class', json.user_class)
+    })
+
+    callback("/")
+  }
+
+  // register = (username, first_name, last_name, email, password, callback) => {
+  //   fetch('http://localhost:3000/api/v1/donors', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //     },
+  //     body: JSON.stringify({ username, first_name, last_name, email, password })
+  //   })
+  //   .then(res => res.json())
+  //   .then(json => console.log(json))
+  //
+  //   callback("/")
+  // }
+
   render() {
     return (
-      <div>
-
-      </div>
+      <Router>
+        <div>
+          <Route exact path='/' component={Home} />
+          <Route path='/login' render={(props) => <UserLogin onSubmit={this.login} {...props} />} />
+        </div>
+      </Router>
     );
   }
 }
