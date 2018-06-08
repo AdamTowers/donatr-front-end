@@ -1,0 +1,2 @@
+export const FETCH_DONATIONS = 'FETCH_DONATIONS';
+export const NEW_DONATION = 'NEW_DONATION';
