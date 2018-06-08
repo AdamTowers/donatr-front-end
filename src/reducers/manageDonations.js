@@ -7,6 +7,11 @@ const initialState = {
 
 export default function manageDonations(state = initialState, action) {
   switch (action.type) {
+    case FETCH_DONATIONS:
+      return {
+        ...state,
+        donations: action.payload
+      }
     default:
       return state;
   }
