@@ -48,7 +48,7 @@ class App extends Component {
   render() {
     return (
       <div className='app-container'>
-        <Route exact path='/' component={Home} />
+        <Route exact path='/' render={(props) => <Home {...props} />} />
         <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
         <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
       </div>
