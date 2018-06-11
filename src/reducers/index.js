@@ -1,6 +1,16 @@
-import { combineReducers } from 'redux';
-import manageDonations from './manageDonations';
+const initialState = {
+  donations: [],
+  newDonation: {}
+}
 
-export default combineReducers({
-  donations: manageDonations
-});
+export default function reducer(state = initialState, action) {
+  switch (action.type) {
+    case 'FETCH_DONATIONS':
+      return {
+        ...state,
+        donations: action.payload
+      }
+    default:
+      return state;
+  }
+};

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-
 import Home from './components/Home'
 import DonorLogin from  './components/DonorLogin'
 import DonorRegister from  './components/DonorRegister'
+import { connect } from 'react'
 
 class App extends Component {
   donorLogin = (username, password, callback) => {
@@ -46,6 +47,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.store)
     return (
       <Router>
         <div className='app-container'>
