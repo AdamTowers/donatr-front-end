@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 import FundCard from './FundCard'
 import { connect } from 'react-redux'
-import { fetchFunds } from '../actions/index'
+import { getFunds, fetchFunds } from '../actions/index'
 
 class Home extends Component {
   componentDidMount() {
-   this.props.getFunds()
+   fetch('http://localhost:3000/api/v1/funds')
+    .then(res => res.json())
+    .then(funds => {
+      this.props.dispatch(getFunds(funds))
+      // this.props.getFunds(funds)
+    })
+
+   // this.props.fetchFunds()
+   // this.props.dispatch((dispatch) => {
+   //   fetch('http://localhost:3000/api/v1/funds')
+   //    .then(res => res.json())
+   //    .then(funds => {
+   //      dispatch(getFunds(funds))
+   //    })
+   // })
   }
 
   render() {
@@ -36,13 +50,28 @@ function mapStateToProps(state) {
   }
 }
 
+// Through this.props.dispatch(yourAction)
 function mapDispatchToProps(dispatch) {
   return {
-    getFunds: () => {
-      return dispatch(fetchFunds())
-    }
+    dispatch
    }
 }
 
+// Through this.props.yourAction
+// function mapDispatchToProps(dispatch) {
+//   return {
+    // getFunds: (funds) => {
+//       dispatch(getFunds(funds))
+//     }
+//    }
+// }
+//
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     fetchFunds: () => {
+//       dispatch(fetchFunds())
+//     }
+//    }
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
