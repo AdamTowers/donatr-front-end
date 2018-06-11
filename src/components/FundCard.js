@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class FundCard extends Component {
-  render() {
-    return (
-      <div className='fund-card'>
-        <h4>Fund title goes here...</h4>
-        <h5>Organization</h5>
-        <h4><strong>000 donors</strong></h4>
-        <p>$0/<strong>$20,000</strong> goal reached</p>
-      </div>
-    )
-  }
+const FundCard = (props) => {
+  return (
+    <div className='fund-card'>
+      <h4>{props.fund.title}</h4>
+      <h5>{props.fund.organization.name}</h5>
+      <h4><strong>{props.fund.donor_count} donors</strong></h4>
+      <p>${props.fund.raised}/<strong>${props.fund.goal}</strong> goal reached</p>
+    </div>
+  )
 }
+
+export default FundCard;

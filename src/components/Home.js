@@ -23,7 +23,8 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props)
+    const funds = this.props.funds.map(fund => <FundCard key={fund.id} fund={fund} />)
+
     return (
       <div>
         <div>
@@ -37,7 +38,7 @@ class Home extends Component {
         </div>
 
         <div className='fund-cards-container'>
-          <FundCard />
+          {funds}
         </div>
       </div>
     )
@@ -65,7 +66,7 @@ function mapDispatchToProps(dispatch) {
 //     }
 //    }
 // }
-//
+
 // function mapDispatchToProps(dispatch) {
 //   return {
 //     fetchFunds: () => {
