@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import FundCard from './FundCard'
+import { connect } from 'react-redux'
+import { fetchFunds } from '../actions/index'
 
-export default class Home extends Component {
+class Home extends Component {
+  componentDidMount() {
+   this.props.getFunds()
+  }
+
   render() {
+    console.log(this.props)
     return (
       <div>
         <div>
@@ -22,3 +29,20 @@ export default class Home extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    funds: state.funds
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getFunds: () => {
+      return dispatch(fetchFunds())
+    }
+   }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -1,21 +1,36 @@
-// export function fetchDonations() {
-//   return function(dispatch) {
-//     fetch(`http://localhost:3000/api/v1/donors/${localStorage.getItem('user_id')}`,{
-//       headers: {
-//         'Authorization' : localStorage.getItem('token')
-//       }
-//     })
-//     .then(res => res.json())
-//     .then(donor => dispatch({
-//       type: 'FETCH_DONATIONS',
-//       payload: donor.donations
-//     }))
-//   }
-// }
+export const fetchFunds = () => {
+  let funds = fetch('http://localhost:3000/api/v1/funds')
+    .then(res => res.json())
+    .then(funds => dispatch(getFunds(funds)))
+  // return {type: "FETCH_FUNDS", payload: funds}
 
-export function populateDonations(payload) {
+}
+
+export const getFunds = (funds) => {
   return {
-    type: 'FETCH_DONATIONS',
-    payload: payload
+    type: "FETCH_FUNDS",
+    payload: funds
   }
 }
+
+
+// return fetch('http://localhost:3000/api/v1/funds')
+//   .then(res => res.json())
+//   .then(funds => {
+//     dispatch({type: "FETCH_FUNDS", payload: funds})
+//   })
+
+// export function fetchJournal(user_id, history) {
+//   return dispatch => {
+//     return fetch(`http://localhost:3000/api/v1/journals/`, {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json"
+//       }
+//     })
+//       .then(res => res.json())
+//       .then(journal => {
+//         dispatch({ type: GET_JOURNAL, journal: journal[0] });
+//       });
+//   };
+// }
