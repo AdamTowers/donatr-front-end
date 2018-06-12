@@ -1,8 +1,8 @@
-import { FETCH_FUNDS } from '../actions/types';
 import { FETCH_USER } from '../actions/types';
-import { SELECT_FUND } from '../actions/types';
+import { FETCH_ORGS } from '../actions/types';
 
 const initialState = {
+  organizations: [],
   funds: [],
   user: {
     donations: []
@@ -13,12 +13,14 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_FUNDS:
-      return {...state, funds: action.payload }
+    case FETCH_ORGS:
+      let fundsArr = []
+      action.payload.forEach(org => {
+        fundsArr = fundsArr.concat(org.funds)
+      })
+      return {...state, orgs: action.payload, funds: fundsArr }
     case FETCH_USER:
       return {...state, user: action.payload }
-    case SELECT_FUND:
-      return {...state, selectedFund: action.payload }
     default:
       return state;
   }

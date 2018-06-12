@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getFunds } from './actions/index';
+import { fetchOrgs } from './actions/index';
 
 import Home from './components/Home';
 import DonorLogin from  './components/DonorLogin';
@@ -52,10 +52,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-   fetch('http://localhost:3000/api/v1/funds')
+   fetch('http://localhost:3000/api/v1/organizations')
     .then(res => res.json())
-    .then(funds => {
-      this.props.dispatch(getFunds(funds))
+    .then(json => {
+      this.props.dispatch(fetchOrgs(json))
       // this.props.getFunds(funds)
     })
 
