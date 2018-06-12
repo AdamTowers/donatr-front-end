@@ -1,5 +1,6 @@
 import { FETCH_FUNDS } from './types';
 import { FETCH_USER } from './types';
+import { SELECT_FUND } from '../actions/types';
 
 // export const fetchFunds = () => {
 //   return (dispatch) => {
@@ -24,6 +25,14 @@ export const getUser = (user) => {
     payload: user
   }
 }
+
+export const selectFund = (fund) => {
+  return {
+    type: SELECT_FUND,
+    payload: fund
+  }
+}
+
 
 /* COPY ME
 export const myAction = (params) => {

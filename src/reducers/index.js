@@ -1,11 +1,14 @@
 import { FETCH_FUNDS } from '../actions/types';
 import { FETCH_USER } from '../actions/types';
+import { SELECT_FUND } from '../actions/types';
 
 const initialState = {
   funds: [],
   user: {
     donations: []
-  }
+  },
+  selectedFund: {},
+  selectedOrg: {}
 }
 
 export default function reducer(state = initialState, action) {
@@ -14,6 +17,8 @@ export default function reducer(state = initialState, action) {
       return {...state, funds: action.payload }
     case FETCH_USER:
       return {...state, user: action.payload }
+    case SELECT_FUND:
+      return {...state, selectedFund: action.payload }
     default:
       return state;
   }

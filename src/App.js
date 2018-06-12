@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Route, NavLink, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { getFunds } from './actions/index';
 
 import Home from './components/Home';
 import DonorLogin from  './components/DonorLogin';
 import DonorRegister from  './components/DonorRegister';
-import Account from './components/Account'
+import Account from './components/Account';
+import Fund from './components/Fund';
 
 class App extends Component {
   donorLogin = (username, password, callback) => {
@@ -47,6 +51,24 @@ class App extends Component {
     callback("/")
   }
 
+  componentDidMount() {
+   fetch('http://localhost:3000/api/v1/funds')
+    .then(res => res.json())
+    .then(funds => {
+      this.props.dispatch(getFunds(funds))
+      // this.props.getFunds(funds)
+    })
+
+   // this.props.fetchFunds()
+   // this.props.dispatch((dispatch) => {
+   //   fetch('http://localhost:3000/api/v1/funds')
+   //    .then(res => res.json())
+   //    .then(funds => {
+   //      dispatch(getFunds(funds))
+   //    })
+   // })
+  }
+
   render() {
     return (
       <div className='app-container'>
@@ -54,9 +76,40 @@ class App extends Component {
         <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
         <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
         <Route path='/account' render={(props) => <Account {...props} />} />
+        <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    state
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+
+// Through this.props.yourAction
+// function mapDispatchToProps(dispatch) {
+//   return {
+    // getFunds: (funds) => {
+//       dispatch(getFunds(funds))
+//     }
+//    }
+// }
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     fetchFunds: () => {
+//       dispatch(fetchFunds())
+//     }
+//    }
+// }
