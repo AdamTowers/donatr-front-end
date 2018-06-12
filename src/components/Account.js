@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import FundCard from './FundCard'
+import DonationCard from './DonationCard'
+
 import { connect } from 'react-redux'
 import { getUser } from '../actions/index'
 
@@ -23,16 +25,20 @@ class Account extends Component {
   }
 
   render() {
-    // const donations =
-    //  this.props.user.donations.map(donation =>
-    //  <DonationCard key={donation.id} donation={donation} history={this.props.history} />)
-    console.log(this.props.user)
+    const donations =
+     this.props.user.donations.map(donation =>
+     <DonationCard key={donation.id} donation={donation} history={this.props.history} />)
+
     return (
       <div>
         <div>
           <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
-          <div className=''>
-
+          <div className='account-buttons-container'>
+            <button>Payment Methods</button>
+            <button>Edit Account</button>
+          </div>
+          <div className='cards-container'>
+            {donations}
           </div>
         </div>
       </div>

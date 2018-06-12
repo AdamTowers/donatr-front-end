@@ -3,7 +3,9 @@ import { FETCH_USER } from '../actions/types';
 
 const initialState = {
   funds: [],
-  user: {}
+  user: {
+    donations: []
+  }
 }
 
 export default function reducer(state = initialState, action) {

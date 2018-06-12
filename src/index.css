@@ -17,7 +17,7 @@ body {
   align-items: flex-start;
 }
 
-.fund-card {
+.card {
   border: 1px solid blue;
   padding: 20px;
   width: 20%;
