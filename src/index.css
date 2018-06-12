@@ -12,9 +12,16 @@ body {
 .fund-cards-container {
   border: 1px solid red;
   padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .fund-card {
   border: 1px solid blue;
   padding: 20px;
+  width: 20%;
+  height: 50%;
+  margin: 2%;
+  overflow: hidden;
 }

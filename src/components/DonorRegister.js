@@ -21,7 +21,7 @@ export default class UserRegister extends Component {
       this.state.username,
       this.state.first_name,
       this.state.last_name,
-      this.state.email, 
+      this.state.email,
       this.state.password,
       this.props.history.push
     )
@@ -29,44 +29,46 @@ export default class UserRegister extends Component {
 
   render() {
     return (
-      <form onSubmit={(event) => this.handleSubmit(event)}>
-        <input
-          type='text'
-          name='username'
-          value={this.state.username}
-          placeholder='Username'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <input
-          type='text'
-          name='first_name'
-          value={this.state.first_name}
-          placeholder='First name'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <input
-          type='text'
-          name='last_name'
-          value={this.state.last_name}
-          placeholder='Last name'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <input
-          type='text'
-          name='email'
-          value={this.state.email}
-          placeholder='Email'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <input
-          type='password'
-          name='password'
-          value={this.state.password}
-          placeholder='Password'
-          onChange={(event) => this.handleChange(event)}
-        />
-      <input type='submit' value='Sign Up'/>
-      </form>
+      <div>
+        <form onSubmit={(event) => this.handleSubmit(event)}>
+          <input
+            type='text'
+            name='username'
+            value={this.state.username}
+            placeholder='Username'
+            onChange={(event) => this.handleChange(event)}
+          />
+          <input
+            type='text'
+            name='first_name'
+            value={this.state.first_name}
+            placeholder='First name'
+            onChange={(event) => this.handleChange(event)}
+          />
+          <input
+            type='text'
+            name='last_name'
+            value={this.state.last_name}
+            placeholder='Last name'
+            onChange={(event) => this.handleChange(event)}
+          />
+          <input
+            type='text'
+            name='email'
+            value={this.state.email}
+            placeholder='Email'
+            onChange={(event) => this.handleChange(event)}
+          />
+          <input
+            type='password'
+            name='password'
+            value={this.state.password}
+            placeholder='Password'
+            onChange={(event) => this.handleChange(event)}
+          />
+        <input type='submit' value='Sign Up'/>
+        </form>
+      </div>
     )
   }
 }
