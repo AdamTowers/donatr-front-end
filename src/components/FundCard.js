@@ -6,7 +6,6 @@ export default class FundCard extends Component {
   }
 
   render() {
-    debugger
     return (
       <div className='card'>
         <h4>{this.props.fund.title}</h4>

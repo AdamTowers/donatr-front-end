@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import FundCard from './FundCard'
-import DonationCard from './DonationCard'
 
 import { connect } from 'react-redux'
-import { selectFund } from '../actions/index'
+import { selectedFund } from '../actions/index'
 
 class Fund extends Component {
+  componentDidMount() {
 
+  }
 
   render() {
     return (
       <div>
-        <h1>Fund name</h1>
+        <h1>{this.props.selectedFund.title}</h1>
       </div>
     )
   }

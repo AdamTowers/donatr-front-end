@@ -1,5 +1,6 @@
-import { FETCH_ORGS } from './types';
+import { FETCH_FUNDS } from './types';
 import { FETCH_USER } from './types';
+import { SELECTED_FUND } from './types';
 
 // export const fetchFunds = () => {
 //   return (dispatch) => {
@@ -11,19 +12,27 @@ import { FETCH_USER } from './types';
 //   }
 // }
 
-export const fetchOrgs = (orgs) => {
+export const fetchFunds = (funds) => {
   return {
-    type: FETCH_ORGS,
-    payload: orgs
+    type: FETCH_FUNDS,
+    payload: funds
   }
 }
 
-export const getUser = (user) => {
+export const fetchUser = (user) => {
   return {
     type: FETCH_USER,
     payload: user
   }
 }
+
+export const selectedFund = (fund) => {
+  return {
+    type: SELECTED_FUND,
+    payload: fund
+  }
+}
+
 
 
 /* COPY ME

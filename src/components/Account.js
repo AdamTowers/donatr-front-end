@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import FundCard from './FundCard'
 import DonationCard from './DonationCard'
 
 import { connect } from 'react-redux'
-import { getUser } from '../actions/index'
+import { fetchUser } from '../actions/index'
 
 class Account extends Component {
   componentDidMount() {
@@ -16,7 +15,7 @@ class Account extends Component {
       })
        .then(res => res.json())
        .then(json =>
-         this.props.dispatch(getUser(json))
+         this.props.dispatch(fetchUser(json))
         )
        //dispatch currentUser to state
     } else {

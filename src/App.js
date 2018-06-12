@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Route, NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchOrgs } from './actions/index';
-
 import Home from './components/Home';
 import DonorLogin from  './components/DonorLogin';
 import DonorRegister from  './components/DonorRegister';
@@ -51,24 +49,6 @@ class App extends Component {
     callback("/")
   }
 
-  componentDidMount() {
-   fetch('http://localhost:3000/api/v1/organizations')
-    .then(res => res.json())
-    .then(json => {
-      this.props.dispatch(fetchOrgs(json))
-      // this.props.getFunds(funds)
-    })
-
-   // this.props.fetchFunds()
-   // this.props.dispatch((dispatch) => {
-   //   fetch('http://localhost:3000/api/v1/funds')
-   //    .then(res => res.json())
-   //    .then(funds => {
-   //      dispatch(getFunds(funds))
-   //    })
-   // })
-  }
-
   render() {
     return (
       <div className='app-container'>
@@ -95,21 +75,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
-
-
-// Through this.props.yourAction
-// function mapDispatchToProps(dispatch) {
-//   return {
-    // getFunds: (funds) => {
-//       dispatch(getFunds(funds))
-//     }
-//    }
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     fetchFunds: () => {
-//       dispatch(fetchFunds())
-//     }
-//    }
-// }
