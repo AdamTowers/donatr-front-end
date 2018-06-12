@@ -1,4 +1,5 @@
 import { FETCH_FUNDS } from './types';
+import { FETCH_USER } from './types';
 
 // export const fetchFunds = () => {
 //   return (dispatch) => {
@@ -14,6 +15,13 @@ export const getFunds = (funds) => {
   return {
     type: FETCH_FUNDS,
     payload: funds
+  }
+}
+
+export const getUser = (user) => {
+  return {
+    type: FETCH_USER,
+    payload: user
   }
 }
 

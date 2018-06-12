@@ -37,7 +37,7 @@ class Home extends Component {
           <input type='text' placeholder='Search funds'></input>
         </div>
 
-        <div className='fund-cards-container'>
+        <div className='cards-container'>
           {funds}
         </div>
       </div>

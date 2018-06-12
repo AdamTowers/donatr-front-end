@@ -9,7 +9,7 @@ body {
   padding: 20px;
 }
 
-.fund-cards-container {
+.cards-container {
   border: 1px solid red;
   padding: 20px;
   display: flex;

@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
 import FundCard from './FundCard'
 import { connect } from 'react-redux'
-import { getFunds } from '../actions/index'
+import { getUser } from '../actions/index'
 
 class Account extends Component {
   componentDidMount() {
-   fetch(`http://localhost:3000/api/v1/donors/${localStorage.getItem('id')}`)
-    .then(res => res.json())
-    .then(json => console.log(json))
-    //dispatch currentUser to state
+    if(localStorage.getItem('token')) {
+      fetch(`http://localhost:3000/api/v1/donors/${localStorage.getItem('user_id')}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token')
+        }
+      })
+       .then(res => res.json())
+       .then(json =>
+         this.props.dispatch(getUser(json))
+        )
+       //dispatch currentUser to state
+    } else {
+      this.props.history.push("/login");
+    }
   }
 
   render() {
     // const donations =
-    //  this.props.currentUser.donations.map(donation =>
+    //  this.props.user.donations.map(donation =>
     //  <DonationCard key={donation.id} donation={donation} history={this.props.history} />)
-
+    console.log(this.props.user)
     return (
       <div>
         <div>
-          <h1>User Name</h1>
+          <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
+          <div className=''>
+
+          </div>
         </div>
       </div>
     )
@@ -28,7 +42,7 @@ class Account extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser
+    user: state.user
   }
 }
 
@@ -37,4 +51,4 @@ function mapDispatchToProps(dispatch) {
     dispatch
    }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Account)

@@ -1,2 +1,2 @@
 export const FETCH_FUNDS = 'FETCH_FUNDS';
-export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
+export const FETCH_USER = 'FETCH_USER';

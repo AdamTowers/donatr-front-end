@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Route, NavLink, Redirect } from 'react-router-dom';
-import Home from './components/Home'
-import DonorLogin from  './components/DonorLogin'
-import DonorRegister from  './components/DonorRegister'
+
+import Home from './components/Home';
+import DonorLogin from  './components/DonorLogin';
+import DonorRegister from  './components/DonorRegister';
+import Account from './components/Account'
 
 class App extends Component {
   donorLogin = (username, password, callback) => {
@@ -51,6 +53,7 @@ class App extends Component {
         <Route exact path='/' render={(props) => <Home {...props} />} />
         <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
         <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
+        <Route path='/account' render={(props) => <Account {...props} />} />
       </div>
     );
   }
