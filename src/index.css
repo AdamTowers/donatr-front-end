@@ -3,3 +3,18 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.app-container {
+  border: 1px solid green;
+  padding: 20px;
+}
+
+.fund-cards-container {
+  border: 1px solid red;
+  padding: 20px;
+}
+
+.fund-card {
+  border: 1px solid blue;
+  padding: 20px;
+}

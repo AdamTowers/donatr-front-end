@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
+import { Route, NavLink, Redirect } from 'react-router-dom';
 import Home from './components/Home'
 import DonorLogin from  './components/DonorLogin'
 import DonorRegister from  './components/DonorRegister'
@@ -47,13 +47,11 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div>
-          <Route exact path='/' component={Home} />
-          <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
-          <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
-        </div>
-      </Router>
+      <div className='app-container'>
+        <Route exact path='/' render={(props) => <Home {...props} />} />
+        <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
+        <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
+      </div>
     );
   }
 }
