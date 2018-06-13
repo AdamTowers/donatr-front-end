@@ -52,7 +52,10 @@ class Fund extends Component {
       .then(res => res.json())
       .then(json => console.log(json))
     }
+  }
 
+  handleOrgClick(event) {
+    this.props.history.push(`/organizations/${this.props.selectedFund.organization_id}`)
   }
 
   render() {
@@ -61,20 +64,30 @@ class Fund extends Component {
       <div>
         <div>
           <h1>{selectedFund.title}</h1>
-          <h3>{selectedFund.organization_name}</h3>
+          <h3 onClick={(event) => this.handleOrgClick(event)}>{selectedFund.organization_name}</h3>
           <p>{selectedFund.description}</p>
         </div>
 
         <div>
-          <h4>${selectedFund.raised}/${selectedFund.goal} raised</h4>
-          <form onSubmit={(event) => this.handleSubmit(event)}>
-            <input
-              type='number'
-              placeholder='$'
-              onChange={(event) => this.handleChange(event)}
-              />
-            <input type='submit' value='Donate' />
-          </form>
+          <h3>${selectedFund.raised}/${selectedFund.goal} raised</h3>
+          <h5>{selectedFund.donation_count} donations</h5>
+          {
+            localStorage.getItem('token') ?
+            <form onSubmit={(event) => this.handleSubmit(event)}>
+              <input
+                type='number'
+                placeholder='$'
+                onChange={(event) => this.handleChange(event)}
+                />
+              <input type='submit' value='Donate' />
+            </form>
+            :
+            <div>
+              <p>Login to make a donation</p>
+              <button onClick={() => this.props.history.push('/login')}>Login</button>
+            </div>
+          }
+
         </div>
       </div>
     )
