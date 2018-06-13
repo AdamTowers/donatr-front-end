@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom'
 import { fetchUser } from '../actions/index'
 
 class EditAccount extends Component {
@@ -31,7 +30,7 @@ class EditAccount extends Component {
          }
         )
     } else {
-      return <Redirect to='/login'  />
+      this.props.history.push('/login')
     }
   }
 
@@ -60,13 +59,11 @@ class EditAccount extends Component {
       })
       .then(res => res.json())
       .then(json => {
-        this.setState({
-          username: json.username,
-          first_name: json.first_name,
-          last_name: json.last_name,
-          email: json.email
-        })
-        this.props.dispatch(fetchUser(json))
+        if (json.errors) {
+          this.setState(json.errors)
+        } else {
+          this.props.history.push('/account')
+        }
       })
     }
   }
