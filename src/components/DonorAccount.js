@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchUser } from '../actions/index'
 import DonationCard from './DonationCard'
 
-class Account extends Component {
+class DonorAccount extends Component {
   componentDidMount() {
     if(localStorage.getItem('token')) {
       fetch(`http://localhost:3000/api/v1/donors/${localStorage.getItem('user_id')}`, {
@@ -54,4 +54,4 @@ function mapDispatchToProps(dispatch) {
     dispatch
    }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Account)
+export default connect(mapStateToProps, mapDispatchToProps)(DonorAccount)
