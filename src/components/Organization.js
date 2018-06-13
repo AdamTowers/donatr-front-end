@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
+import FundCard from './FundCard'
 
 import { connect } from 'react-redux'
 import { selectedOrg } from '../actions/index'
 
 class Organization extends Component {
   componentDidMount() {
-    // debugger
-    // fetch(`http://localhost:3000/api/v1/organizations/${this.props.match.params.slug}`)
-    // .then(res => res.json())
-    // .then(json => {
-    //   this.props.dispatch(selectedFund(json))
-    // })
+    fetch(`http://localhost:3000/api/v1/organizations/${this.props.match.params.id}`)
+    .then(res => res.json())
+    .then(json => {
+      this.props.dispatch(selectedOrg(json))
+    })
   }
 
   render() {
+    const selectedOrg = this.props.selectedOrg
+    const funds = selectedOrg.funds.map(fund => <FundCard key={fund.id} fund={fund} history={this.props.history} />)
+
     return (
       <div>
-        <h1>Organization Name</h1>
+        <div>
+          <h1>{selectedOrg.name}</h1>
+          <p>{selectedOrg.bio}</p>
+        </div>
+
+        <div  className='cards-container'>
+          {funds}
+        </div>
       </div>
     )
   }

@@ -10,7 +10,9 @@ const initialState = {
     donations: []
   },
   selectedFund: {},
-  selectedOrg: {}
+  selectedOrg: {
+    funds: []
+  }
 }
 
 export default function reducer(state = initialState, action) {

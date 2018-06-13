@@ -58,7 +58,7 @@ class App extends Component {
         <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
         <Route path='/account' render={(props) => <Account {...props} />} />
         <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
-        <Route exact path='/organizations/:slug' render={(props) => <Organization {...props} />} />
+        <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
       </div>
     );
   }
