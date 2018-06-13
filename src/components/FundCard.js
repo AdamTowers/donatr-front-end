@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 export default class FundCard extends Component {
   handleOrgClick(event) {
-    this.props.history.push(`/organizations/${this.props.organization_id}`)
+    debugger
+    this.props.history.push(`/organizations/${this.props.fund.organization_id}`)
   }
 
   render() {
