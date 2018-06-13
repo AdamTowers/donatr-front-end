@@ -32,7 +32,7 @@ class DonorAccount extends Component {
           <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
           <div className='account-buttons-container'>
             <button>Payment Methods</button>
-            <button>Edit Account</button>
+            <button onClick={() => this.props.history.push('/account/edit')}>Edit Account</button>
           </div>
           <div className='cards-container'>
             {donations}
