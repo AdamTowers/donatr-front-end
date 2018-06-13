@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import DonationCard from './DonationCard'
-
 import { connect } from 'react-redux'
 import { fetchUser } from '../actions/index'
+import DonationCard from './DonationCard'
 
 class Account extends Component {
   componentDidMount() {
@@ -17,10 +16,8 @@ class Account extends Component {
        .then(json =>
          this.props.dispatch(fetchUser(json))
         )
-       //dispatch currentUser to state
     } else {
-      //redirect to login
-      // this.props.history.push("/login");
+      this.props.history.push('/login')
     }
   }
 

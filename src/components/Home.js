@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import FundCard from './FundCard'
 import { connect } from 'react-redux'
-
 import { fetchFunds } from '../actions/index';
+import FundCard from './FundCard'
 
 class Home extends Component {
   componentDidMount() {

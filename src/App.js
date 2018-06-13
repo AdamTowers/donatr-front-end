@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Route, NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, NavLink, Redirect } from 'react-router-dom';
 import Home from './components/Home';
 import DonorLogin from  './components/DonorLogin';
 import DonorRegister from  './components/DonorRegister';
@@ -53,15 +53,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className='app-container'>
-        <Route exact path='/' render={(props) => <Home {...props} />} />
-        <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
-        <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
-        <Route exact path='/account' render={(props) => <Account {...props} />} />
-        <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
-        <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
-        <Route exact path='/account/edit' render={(props) => <EditAccount {...props} />} />
-      </div>
+      <Router>
+        <div className='app-container'>
+          <Route exact path='/' render={(props) => <Home {...props} />} />
+          <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
+          <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
+          <Route exact path='/account' render={(props) => <Account {...props} />} />
+          <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
+          <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
+          <Route exact path='/account/edit' render={(props) => <EditAccount {...props} />} />
+        </div>
+      </Router>
     );
   }
 }

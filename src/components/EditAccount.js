@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import { fetchUser } from '../actions/index'
 
 class EditAccount extends Component {
@@ -31,8 +31,7 @@ class EditAccount extends Component {
          }
         )
     } else {
-      //redirect to login
-      // this.props.history.push("/login");
+      return <Redirect to='/login'  />
     }
   }
 
@@ -44,7 +43,32 @@ class EditAccount extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    debugger
+    if (localStorage.getItem('token')) {
+      fetch(`http://localhost:3000/api/v1/donors/${parseInt(localStorage.getItem('user_id'))}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+          username: this.state.username,
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          email: this.state.email,
+        })
+      })
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          username: json.username,
+          first_name: json.first_name,
+          last_name: json.last_name,
+          email: json.email
+        })
+        this.props.dispatch(fetchUser(json))
+      })
+    }
   }
 
   render() {
@@ -79,7 +103,7 @@ class EditAccount extends Component {
             placeholder='Email'
             onChange={(event) => this.handleChange(event)}
           />
-        <input type='submit' value='Sign Up'/>
+          <input type='submit' value='Update'/>
         </form>
       </div>
     )
