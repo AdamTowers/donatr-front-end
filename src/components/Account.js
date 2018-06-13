@@ -26,7 +26,7 @@ class Account extends Component {
   render() {
     const donations =
      this.props.user.donations.map(donation =>
-     <DonationCard key={donation.id} donation={donation} history={this.props.history} />)
+     <DonationCard key={donation.id} donation={donation} history={this.props.history} />).reverse()
 
     return (
       <div>

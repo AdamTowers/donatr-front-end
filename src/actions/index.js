@@ -1,6 +1,7 @@
 import { FETCH_FUNDS } from './types';
 import { FETCH_USER } from './types';
 import { SELECTED_FUND } from './types';
+import { SELECTED_ORG } from './types';
 
 // export const fetchFunds = () => {
 //   return (dispatch) => {
@@ -33,6 +34,12 @@ export const selectedFund = (fund) => {
   }
 }
 
+export const selectedOrg = (org) => {
+  return {
+    type: SELECTED_ORG,
+    payload: org
+  }
+}
 
 
 /* COPY ME

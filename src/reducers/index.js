@@ -1,6 +1,7 @@
 import { FETCH_USER } from '../actions/types';
 import { FETCH_FUNDS } from '../actions/types';
 import { SELECTED_FUND } from '../actions/types';
+import { SELECTED_ORG } from '../actions/types';
 
 const initialState = {
   organizations: [],
@@ -20,6 +21,8 @@ export default function reducer(state = initialState, action) {
       return {...state, user: action.payload }
     case SELECTED_FUND:
       return {...state, selectedFund: action.payload }
+    case SELECTED_ORG:
+      return {...state, selectedOrg: action.payload }
     default:
       return state;
   }

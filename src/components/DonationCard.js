@@ -8,8 +8,8 @@ export default class DonationCard extends Component {
   render() {
     return (
       <div className='card'>
-        <h4>${this.props.donation.amount}</h4>
-        <h5 onClick={(event)=>this.handleFundClick(event)}>{this.props.donation.fund_name}</h5>
+        <h3>${this.props.donation.amount}</h3>
+        <h5 onClick={(event)=>this.handleFundClick(event)}>{this.props.donation.fund_title}</h5>
       </div>
     )
   }
