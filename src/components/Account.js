@@ -19,7 +19,8 @@ class Account extends Component {
         )
        //dispatch currentUser to state
     } else {
-      this.props.history.push("/login");
+      //redirect to login
+      // this.props.history.push("/login");
     }
   }
 

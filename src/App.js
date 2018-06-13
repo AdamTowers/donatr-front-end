@@ -8,6 +8,7 @@ import DonorRegister from  './components/DonorRegister';
 import Account from './components/Account';
 import Fund from './components/Fund';
 import Organization from './components/Organization';
+import EditAccount from './components/EditAccount';
 
 class App extends Component {
   donorLogin = (username, password, callback) => {
@@ -56,9 +57,10 @@ class App extends Component {
         <Route exact path='/' render={(props) => <Home {...props} />} />
         <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
         <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
-        <Route path='/account' render={(props) => <Account {...props} />} />
+        <Route exact path='/account' render={(props) => <Account {...props} />} />
         <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
         <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
+        <Route exact path='/account/edit' render={(props) => <EditAccount {...props} />} />
       </div>
     );
   }
