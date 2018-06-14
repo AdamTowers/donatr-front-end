@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, NavLink, Redirect } from 'react-router-dom';
+import { logout } from './actions/index'
 import Home from './components/Home';
 import DonorLogin from  './components/DonorLogin';
 import DonorRegister from  './components/DonorRegister';
@@ -51,6 +52,10 @@ class App extends Component {
     callback("/")
   }
 
+  handleLogout() {
+    this.props.dispatch(logout())
+  }
+
   render() {
     const loggedIn = !!localStorage.getItem('token')
 
@@ -62,7 +67,7 @@ class App extends Component {
             { loggedIn ?
               <div>
                 <NavLink to='/account'>Acount</NavLink>
-                <NavLink to='/logout'>Logout</NavLink>
+                <NavLink to='/' onClick={() => this.handleLogout()}>Logout</NavLink>
               </div>
               :
               <div>

@@ -2,6 +2,7 @@ import { FETCH_FUNDS } from './types';
 import { FETCH_USER } from './types';
 import { SELECTED_FUND } from './types';
 import { SELECTED_ORG } from './types';
+import { LOGOUT} from './types';
 
 // export const fetchFunds = () => {
 //   return (dispatch) => {
@@ -38,6 +39,12 @@ export const selectedOrg = (org) => {
   return {
     type: SELECTED_ORG,
     payload: org
+  }
+}
+
+export const logout = () => {
+  return {
+    type: LOGOUT
   }
 }
 

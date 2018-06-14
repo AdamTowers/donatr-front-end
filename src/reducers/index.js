@@ -2,6 +2,7 @@ import { FETCH_USER } from '../actions/types';
 import { FETCH_FUNDS } from '../actions/types';
 import { SELECTED_FUND } from '../actions/types';
 import { SELECTED_ORG } from '../actions/types';
+import { LOGOUT } from '../actions/types';
 
 const initialState = {
   organizations: [],
@@ -25,6 +26,9 @@ export default function reducer(state = initialState, action) {
       return {...state, selectedFund: action.payload }
     case SELECTED_ORG:
       return {...state, selectedOrg: action.payload }
+    case LOGOUT:
+      localStorage.clear()
+      return {...state, user: { donations: [] } }
     default:
       return state;
   }
