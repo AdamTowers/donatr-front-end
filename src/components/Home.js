@@ -46,7 +46,7 @@ class Home extends Component {
       <div>
         <div>
           <h1>Donatr</h1>
-          <h3>For all charitable giving.</h3>
+          <h3>Crowd-sourcing for disaster relief.</h3>
         </div>
 
         <div>

@@ -7,7 +7,7 @@ export default class FundCard extends Component {
 
   render() {
     return (
-      <div className='card' onClick={(event) => this.handleFundClick(event)}>
+      <div className='card sm' onClick={(event) => this.handleFundClick(event)}>
         <h4 onClick={(event) => this.handleFundClick(event)}>{this.props.fund.title}</h4>
         <h5>{this.props.fund.organization_name}</h5>
         <h4>{this.props.fund.donation_count} donations</h4>

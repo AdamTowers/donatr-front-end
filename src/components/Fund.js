@@ -60,7 +60,7 @@ class Fund extends Component {
   render() {
     const selectedFund = this.props.selectedFund
     return (
-      <div>
+      <div className='card'>
         <div>
           <h1>{selectedFund.title}</h1>
           <h3 onClick={(event) => this.handleOrgClick(event)}>{selectedFund.organization_name}</h3>
