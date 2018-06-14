@@ -66,12 +66,12 @@ class App extends Component {
             <NavLink to='/'>Donatr</NavLink>
             { loggedIn ?
               <div>
-                <NavLink to='/account'>Acount</NavLink>
+                <NavLink to='/account'>Account</NavLink>
                 <NavLink to='/' onClick={() => this.handleLogout()}>Logout</NavLink>
               </div>
               :
               <div>
-                <NavLink to='/login'>Login</NavLink>
+                <NavLink to='/donor-login'>Login</NavLink>
               </div>
             }
           </div>
@@ -79,13 +79,13 @@ class App extends Component {
           <Route exact path='/' render={(props) => <Home {...props} />} />
           <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
           <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
-          <Route path='/login' render={(props) =>
+          <Route path='/donor-login' render={(props) =>
               loggedIn ?
                 <Redirect to='/account'/>
                 :
                 <DonorLogin onSubmit={this.donorLogin} {...props} />}
                 />
-          <Route path='/register' render={(props) =>
+              <Route path='/donor-register' render={(props) =>
               loggedIn ?
                 <Redirect to='/account'/>
                 :
@@ -95,13 +95,13 @@ class App extends Component {
               loggedIn ?
                 <DonorAccount {...props} />
                 :
-                <Redirect to='/login'/>}
+                <Redirect to='/donor-login'/>}
                 />
           <Route exact path='/account/edit' render={(props) =>
               loggedIn ?
                 <EditDonorAccount {...props} />
                 :
-                <Redirect to='/login'/>}
+                <Redirect to='/donor-login'/>}
                 />
         </div>
       </Router>

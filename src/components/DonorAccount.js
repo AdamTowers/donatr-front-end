@@ -24,8 +24,8 @@ class DonorAccount extends Component {
   render() {
     const donations =
      this.props.user.donations.map(donation =>
-     <DonationCard key={donation.id} donation={donation} history={this.props.history} />).reverse()
-
+     <DonationCard key={donation.id} donation={donation} history={this.props.history} />).reverse().slice(0,9)
+    
     return (
       <div>
         <div>
@@ -34,6 +34,7 @@ class DonorAccount extends Component {
             <button>Payment Methods</button>
             <button onClick={() => this.props.history.push('/account/edit')}>Edit Account</button>
           </div>
+          <h3>Recent Donations</h3>
           <div className='cards-container'>
             {donations}
           </div>

@@ -31,6 +31,7 @@ export default class UserRegister extends Component {
     return (
       <div>
         <form onSubmit={(event) => this.handleSubmit(event)}>
+          <h2>Donor Registration</h2>
           <input
             type='text'
             name='username'

@@ -72,6 +72,7 @@ class EditDonorAccount extends Component {
     return (
       <div>
         <form onSubmit={(event) => this.handleSubmit(event)}>
+          <h2>Edit Account</h2>
           <input
             type='text'
             name='username'
@@ -100,7 +101,7 @@ class EditDonorAccount extends Component {
             placeholder='Email'
             onChange={(event) => this.handleChange(event)}
           />
-          <input type='submit' value='Update'/>
+        <input type='submit' value='Save'/>
         </form>
       </div>
     )
