@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 export default class DonorLogin extends Component {
   state = {
     username: '',
-    password: ''
+    password: '',
+    error: ''
   }
 
   handleChange(event) {
@@ -15,7 +16,33 @@ export default class DonorLogin extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.onSubmit(this.state.username, this.state.password, this.props.history.push)
+
+    fetch('http://localhost:3000/api/v1/donor_sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    })
+    .then(res => res.json())
+    .then(json => {
+      if (json.errors) {
+        this.setState({
+          error: json.errors
+        })
+      } else {
+        localStorage.setItem('token', json.token)
+        localStorage.setItem('username', json.username)
+        localStorage.setItem('user_id', json.user_id)
+        localStorage.setItem('user_class', json.user_class)
+
+        this.props.history.push("/")
+      }
+    })
   }
 
   render() {
@@ -39,6 +66,7 @@ export default class DonorLogin extends Component {
           />
           <input type='submit' />
         </form>
+        { this.state.error ? <p>{this.state.error}</p> : ''}
         <div>
           <p>Not a member?</p>
           <p>Sign up as a <NavLink to='/donor-register'>donor</NavLink> or organization</p>

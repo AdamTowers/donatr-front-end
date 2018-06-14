@@ -12,26 +12,6 @@ import Organization from './components/Organization';
 import EditDonorAccount from './components/EditDonorAccount';
 
 class App extends Component {
-  donorLogin = (username, password, callback) => {
-    fetch('http://localhost:3000/api/v1/donor_sessions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    })
-    .then(res => res.json())
-    .then(json => {
-      localStorage.setItem('token', json.token)
-      localStorage.setItem('username', json.username)
-      localStorage.setItem('user_id', json.user_id)
-      localStorage.setItem('user_class', json.user_class)
-    })
-
-    callback("/")
-  }
-
   handleLogout() {
     this.props.dispatch(logout())
   }
@@ -63,7 +43,7 @@ class App extends Component {
               loggedIn ?
                 <Redirect to='/account'/>
                 :
-                <DonorLogin onSubmit={this.donorLogin} {...props} />}
+                <DonorLogin {...props} />}
                 />
               <Route path='/donor-register' render={(props) =>
               loggedIn ?
