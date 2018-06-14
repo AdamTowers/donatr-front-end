@@ -6,7 +6,8 @@ export default class UserRegister extends Component {
     first_name: '',
     last_name: '',
     email: '',
-    password: ''
+    password: '',
+    errors: []
   }
 
   handleChange(event) {
@@ -17,56 +18,83 @@ export default class UserRegister extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.onSubmit(
-      this.state.username,
-      this.state.first_name,
-      this.state.last_name,
-      this.state.email, 
-      this.state.password,
-      this.props.history.push
-    )
+    fetch('http://localhost:3000/api/v1/donors', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        email: this.state.email,
+        password: this.state.password
+      })
+    })
+    .then(res => res.json())
+    .then(json => {
+      if (json.errors) {
+        this.setState({errors: json.errors})
+      } else {
+        localStorage.setItem('token', json.token)
+        localStorage.setItem('username', json.username)
+        localStorage.setItem('user_id', json.user_id)
+        localStorage.setItem('user_class', json.user_class)
+
+        this.props.history.push('/account')
+      }
+    })
   }
 
   render() {
+    const errors = this.state.errors.map((error, i) =>
+      <p key={i}>{error}</p>
+    )
+
     return (
-      <form onSubmit={(event) => this.handleSubmit(event)}>
-        <input
-          type='text'
-          name='username'
-          value={this.state.username}
-          placeholder='Username'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <input
-          type='text'
-          name='first_name'
-          value={this.state.first_name}
-          placeholder='First name'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <input
-          type='text'
-          name='last_name'
-          value={this.state.last_name}
-          placeholder='Last name'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <input
-          type='text'
-          name='email'
-          value={this.state.email}
-          placeholder='Email'
-          onChange={(event) => this.handleChange(event)}
-        />
-        <input
-          type='password'
-          name='password'
-          value={this.state.password}
-          placeholder='Password'
-          onChange={(event) => this.handleChange(event)}
-        />
-      <input type='submit' value='Sign Up'/>
-      </form>
+      <div>
+        <form onSubmit={(event) => this.handleSubmit(event)}>
+          <h2>Donor Registration</h2>
+          <input
+            type='text'
+            name='username'
+            value={this.state.username}
+            placeholder='Username'
+            onChange={(event) => this.handleChange(event)}
+          />
+          <input
+            type='text'
+            name='first_name'
+            value={this.state.first_name}
+            placeholder='First name'
+            onChange={(event) => this.handleChange(event)}
+          />
+          <input
+            type='text'
+            name='last_name'
+            value={this.state.last_name}
+            placeholder='Last name'
+            onChange={(event) => this.handleChange(event)}
+          />
+          <input
+            type='text'
+            name='email'
+            value={this.state.email}
+            placeholder='Email'
+            onChange={(event) => this.handleChange(event)}
+          />
+          <input
+            type='password'
+            name='password'
+            value={this.state.password}
+            placeholder='Password'
+            onChange={(event) => this.handleChange(event)}
+          />
+        <input type='submit' value='Sign Up'/>
+        </form>
+        { this.state.errors.length > 0 ? <div>{errors}</div> : ''}
+      </div>
     )
   }
 }

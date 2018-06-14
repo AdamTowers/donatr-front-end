@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import FundCard from './FundCard'
 import { connect } from 'react-redux'
-import { getFunds } from '../actions/index'
+import { fetchFunds } from '../actions/index';
+import FundCard from './FundCard'
 
 class Home extends Component {
+  state = {
+    filter: ''
+  }
+
   componentDidMount() {
    fetch('http://localhost:3000/api/v1/funds')
     .then(res => res.json())
-    .then(funds => {
-      this.props.dispatch(getFunds(funds))
+    .then(json => {
+      this.props.dispatch(fetchFunds(json))
       // this.props.getFunds(funds)
     })
 
@@ -22,8 +26,21 @@ class Home extends Component {
    // })
   }
 
+  handleChange(event) {
+    this.setState({
+      filter: event.target.value
+    })
+  }
+
   render() {
-    const funds = this.props.funds.map(fund => <FundCard key={fund.id} fund={fund} history={this.props.history} />)
+    let funds = this.props.funds.map(fund => <FundCard key={fund.id} fund={fund} history={this.props.history} />)
+
+    if (this.state.filter) {
+      const filteredFunds = this.props.funds.filter(fund => fund.title.toLowerCase().includes(this.state.filter.toLowerCase()))
+      funds = filteredFunds.map(fund =>
+        <FundCard key={fund.id} fund={fund} history={this.props.history} />
+      )
+    }
 
     return (
       <div>
@@ -34,11 +51,16 @@ class Home extends Component {
 
         <div>
           <h4>Current Crisis Funds</h4>
-          <input type='text' placeholder='Search funds'></input>
+          <input
+            type='text'
+            placeholder='Search funds'
+            value={this.state.filter}
+            onChange={(event) => this.handleChange(event)}
+            />
         </div>
 
-        <div className='fund-cards-container'>
-          {funds}
+        <div className='cards-container'>
+          { funds.length > 0 ? funds : <p>No funds match your search.</p>}
         </div>
       </div>
     )
@@ -51,12 +73,13 @@ function mapStateToProps(state) {
   }
 }
 
-// Through this.props.dispatch(yourAction)
 function mapDispatchToProps(dispatch) {
   return {
     dispatch
    }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
 
 // Through this.props.yourAction
 // function mapDispatchToProps(dispatch) {
@@ -74,5 +97,3 @@ function mapDispatchToProps(dispatch) {
 //     }
 //    }
 // }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
