@@ -7,7 +7,8 @@ class EditDonorAccount extends Component {
     username: '',
     first_name: '',
     last_name: '',
-    email: ''
+    email: '',
+    errors: []
   }
 
   componentDidMount() {
@@ -60,7 +61,7 @@ class EditDonorAccount extends Component {
       .then(res => res.json())
       .then(json => {
         if (json.errors) {
-          this.setState(json.errors)
+          this.setState({errors: json.errors})
         } else {
           this.props.history.push('/account')
         }
@@ -69,6 +70,10 @@ class EditDonorAccount extends Component {
   }
 
   render() {
+    const errors = this.state.errors.map((error, i) =>
+      <p key={i}>{error}</p>
+    )
+
     return (
       <div>
         <form onSubmit={(event) => this.handleSubmit(event)}>
@@ -103,6 +108,7 @@ class EditDonorAccount extends Component {
           />
         <input type='submit' value='Save'/>
         </form>
+        { this.state.errors.length > 0 ? <div>{errors}</div> : ''}
       </div>
     )
   }

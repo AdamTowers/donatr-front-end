@@ -32,26 +32,6 @@ class App extends Component {
     callback("/")
   }
 
-  donorRegister = (username, first_name, last_name, email, password, callback) => {
-    fetch('http://localhost:3000/api/v1/donors', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({ username, first_name, last_name, email, password })
-    })
-    .then(res => res.json())
-    .then(json => {
-      localStorage.setItem('token', json.token)
-      localStorage.setItem('username', json.username)
-      localStorage.setItem('user_id', json.user_id)
-      localStorage.setItem('user_class', json.user_class)
-    })
-
-    callback("/")
-  }
-
   handleLogout() {
     this.props.dispatch(logout())
   }
@@ -89,7 +69,7 @@ class App extends Component {
               loggedIn ?
                 <Redirect to='/account'/>
                 :
-                <DonorRegister onSubmit={this.donorRegister} {...props} />}
+                <DonorRegister {...props} />}
                 />
           <Route exact path='/account' render={(props) =>
               loggedIn ?
