@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, NavLink, Redirect } from 'react-router-dom';
-import { logout } from './actions/index'
+import { logout } from './actions/index';
 import Home from './components/Home';
 import DonorLogin from  './components/DonorLogin';
 import DonorRegister from  './components/DonorRegister';

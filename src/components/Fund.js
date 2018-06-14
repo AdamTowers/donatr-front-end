@@ -4,7 +4,7 @@ import { selectedFund } from '../actions/index'
 
 class Fund extends Component {
   state = {
-    donationAmount: 0
+    donationAmount: ''
   }
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class Fund extends Component {
     })
   }
 
-  componentWillUnmount() {
+  componentDidUnmount() {
     this.props.dispatch(selectedFund({}))
   }
 
@@ -35,6 +35,9 @@ class Fund extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    this.setState({
+      donationAmount: ''
+    })
     if(localStorage.getItem('token')) {
       fetch('http://localhost:3000/api/v1/donations', {
         method: 'POST',
@@ -77,6 +80,7 @@ class Fund extends Component {
               <input
                 type='number'
                 placeholder='$'
+                value={this.state.donationAmount}
                 onChange={(event) => this.handleChange(event)}
                 />
               <input type='submit' value='Donate' />
