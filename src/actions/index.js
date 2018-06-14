@@ -1,8 +1,9 @@
+import { LOGOUT } from './types';
 import { FETCH_FUNDS } from './types';
 import { FETCH_USER } from './types';
 import { SELECTED_FUND } from './types';
 import { SELECTED_ORG } from './types';
-import { LOGOUT} from './types';
+import { UPDATE_FUND } from './types';
 
 // export const fetchFunds = () => {
 //   return (dispatch) => {
@@ -13,6 +14,12 @@ import { LOGOUT} from './types';
 //      })
 //   }
 // }
+
+export const logout = () => {
+  return {
+    type: LOGOUT
+  }
+}
 
 export const fetchFunds = (funds) => {
   return {
@@ -42,9 +49,10 @@ export const selectedOrg = (org) => {
   }
 }
 
-export const logout = () => {
+export const updateFund = (amount) => {
   return {
-    type: LOGOUT
+    type: UPDATE_FUND,
+    payload: amount
   }
 }
 

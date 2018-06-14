@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { selectedFund } from '../actions/index'
+import { updateFund } from '../actions/index'
 
 class Fund extends Component {
   state = {
@@ -8,15 +9,7 @@ class Fund extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/v1/funds/${parseInt(this.props.match.params.id, 0)}`)
-    .then(res => res.json())
-    .then(json => {
-      this.props.dispatch(selectedFund(json))
-    })
-  }
-
-  componentDidUpdate() {
-    fetch(`http://localhost:3000/api/v1/funds/${parseInt(this.props.match.params.id, 0)}`)
+    fetch(`http://localhost:3000/api/v1/funds/${this.props.match.params.id}`)
     .then(res => res.json())
     .then(json => {
       this.props.dispatch(selectedFund(json))
@@ -49,7 +42,11 @@ class Fund extends Component {
         })
       })
       .then(res => res.json())
-      .then(json => console.log(json))
+      .then(json => {
+        if (!json.errors) {
+          this.props.dispatch(updateFund(json.amount))
+        }
+      })
     }
   }
 
@@ -60,9 +57,9 @@ class Fund extends Component {
   render() {
     const selectedFund = this.props.selectedFund
     return (
-      <div className='card'>
+      <div className='card container'>
         <div>
-          <h1>{selectedFund.title}</h1>
+          <h2>{selectedFund.title}</h2>
           <h3 onClick={(event) => this.handleOrgClick(event)}>{selectedFund.organization_name}</h3>
           <p>{selectedFund.description}</p>
         </div>

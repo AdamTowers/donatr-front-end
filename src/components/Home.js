@@ -59,7 +59,7 @@ class Home extends Component {
             />
         </div>
 
-        <div className='cards-container'>
+        <div className='container flex'>
           { funds.length > 0 ? funds : <p>No funds match your search.</p>}
         </div>
       </div>
