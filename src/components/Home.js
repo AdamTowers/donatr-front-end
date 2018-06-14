@@ -23,7 +23,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props.funds)
     const funds = this.props.funds.map(fund => <FundCard key={fund.id} fund={fund} history={this.props.history} />)
 
     return (

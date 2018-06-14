@@ -52,16 +52,52 @@ class App extends Component {
   }
 
   render() {
+    const loggedIn = !!localStorage.getItem('token')
+
     return (
       <Router>
         <div className='app-container'>
+          <div>
+            <NavLink to='/'>Donatr</NavLink>
+            { loggedIn ?
+              <div>
+                <NavLink to='/account'>Acount</NavLink>
+                <NavLink to='/logout'>Logout</NavLink>
+              </div>
+              :
+              <div>
+                <NavLink to='/login'>Login</NavLink>
+              </div>
+            }
+          </div>
+
           <Route exact path='/' render={(props) => <Home {...props} />} />
-          <Route path='/login' render={(props) => <DonorLogin onSubmit={this.donorLogin} {...props} />} />
-          <Route path='/register' render={(props) => <DonorRegister onSubmit={this.donorRegister} {...props} />} />
-          <Route exact path='/account' render={(props) => <DonorAccount {...props} />} />
           <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
           <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
-          <Route exact path='/account/edit' render={(props) => <EditDonorAccount {...props} />} />
+          <Route path='/login' render={(props) =>
+              loggedIn ?
+                <Redirect to='/account'/>
+                :
+                <DonorLogin onSubmit={this.donorLogin} {...props} />}
+                />
+          <Route path='/register' render={(props) =>
+              loggedIn ?
+                <Redirect to='/account'/>
+                :
+                <DonorRegister onSubmit={this.donorRegister} {...props} />}
+                />
+          <Route exact path='/account' render={(props) =>
+              loggedIn ?
+                <DonorAccount {...props} />
+                :
+                <Redirect to='/login'/>}
+                />
+          <Route exact path='/account/edit' render={(props) =>
+              loggedIn ?
+                <EditDonorAccount {...props} />
+                :
+                <Redirect to='/login'/>}
+                />
         </div>
       </Router>
     );
