@@ -22,11 +22,7 @@ class Fund extends Component {
       this.props.dispatch(selectedFund(json))
     })
   }
-
-  componentDidUnmount() {
-    this.props.dispatch(selectedFund({}))
-  }
-
+  
   handleChange(event) {
     this.setState({
       donationAmount: event.target.value
