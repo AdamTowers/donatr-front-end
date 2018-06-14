@@ -8,7 +8,7 @@ class Fund extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/v1/funds/${parseInt(this.props.match.params.id)}`)
+    fetch(`http://localhost:3000/api/v1/funds/${parseInt(this.props.match.params.id, 0)}`)
     .then(res => res.json())
     .then(json => {
       this.props.dispatch(selectedFund(json))
@@ -16,13 +16,13 @@ class Fund extends Component {
   }
 
   componentDidUpdate() {
-    fetch(`http://localhost:3000/api/v1/funds/${parseInt(this.props.match.params.id)}`)
+    fetch(`http://localhost:3000/api/v1/funds/${parseInt(this.props.match.params.id, 0)}`)
     .then(res => res.json())
     .then(json => {
       this.props.dispatch(selectedFund(json))
     })
   }
-  
+
   handleChange(event) {
     this.setState({
       donationAmount: event.target.value
@@ -44,7 +44,7 @@ class Fund extends Component {
         },
         body: JSON.stringify({
           donor_id: localStorage.getItem('user_id'),
-          fund_id: parseInt(this.props.match.params.id),
+          fund_id: parseInt(this.props.match.params.id, 0),
           amount: this.state.donationAmount
         })
       })

@@ -43,7 +43,7 @@ class EditDonorAccount extends Component {
   handleSubmit(event) {
     event.preventDefault()
     if (localStorage.getItem('token')) {
-      fetch(`http://localhost:3000/api/v1/donors/${parseInt(localStorage.getItem('user_id'))}`, {
+      fetch(`http://localhost:3000/api/v1/donors/${parseInt(localStorage.getItem('user_id'), 0)}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
