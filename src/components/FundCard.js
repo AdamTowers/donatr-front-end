@@ -7,6 +7,7 @@ export default class FundCard extends Component {
   }
 
   render() {
+    const percent = this.props.fund.percent_raised > 100 ? 100 : this.props.fund.percent_raised
     return (
       <div className='card sm' onClick={(event) => this.handleFundClick(event)}>
         <div className='fund-card-image-container'>
@@ -16,11 +17,10 @@ export default class FundCard extends Component {
         <h5>{this.props.fund.organization_name}</h5>
         <p>${this.props.fund.raised}/<strong>${this.props.fund.goal}</strong> goal reached</p>
         <Line
-          percent='10'
+          percent={percent}
           strokeWidth='6'
           strokeColor='rgb(236, 144, 35)'
-          trailWidth='3'
-          gapDegree='360'
+          trailWidth='6'
           />
       </div>
     )
