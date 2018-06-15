@@ -16,6 +16,10 @@ button {
   font-size: .75em;
 }
 
+textarea, select, input, button {
+  outline: none;
+}
+
 .app-container {
   background: linear-gradient(to right, #2D0083, #2BA5FF);
   position: absolute;
@@ -48,6 +52,39 @@ button {
   font-size: 1.5em;
 }
 
+.funds-header {
+  color: white;
+  font-family: 'Montserrat';
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid white;
+  border-radius: 3px;
+  background: none;
+  padding: 7px 10px;
+  color: white;
+  font-size: 1em;
+  font-family: 'Montserrat';
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.search-bar::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+    opacity: 1;
+}
+
+.search-bar:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.search-bar::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.35);
+ }
+
 .card {
   text-align: left;
   background: rgb(245, 245, 245);
@@ -73,5 +110,5 @@ button {
 
 .xsm {
   margin: 10px;
-  flex-basis: 26%;
+  flex-basis: 18%;
 }

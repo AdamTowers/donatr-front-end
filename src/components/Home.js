@@ -50,8 +50,9 @@ class Home extends Component {
         </div>
 
         <div className='container'>
-          <h4>Current Crisis Funds</h4>
+          <h4 className='funds-header'>Current Crisis Funds</h4>
           <input
+            className='search-bar'
             type='text'
             placeholder='Search funds'
             value={this.state.filter}
