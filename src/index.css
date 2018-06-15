@@ -12,25 +12,27 @@ a {
   color: white;
 }
 
+button {
+  background-color: cyan;
+  margin: 3px;
+  border-style: none;
+  border-radius: 3px;
+  font-size: .75em;
+}
+
 .app-container {
-  position: fixed;
-  overflow: scroll;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(to bottom right, #2D0083, #2BA5FF);
+  background: linear-gradient(to right, #2D0083, #2BA5FF);
+  position: absolute;
+  padding: 20px 0px;
+  /* overflow-y: scroll; */
+  min-height: 100%;
+  min-width: 100%;
   text-align: center;
 }
 
 .container {
-  margin: 0 auto;
+  margin: 0px auto;
   max-width: 960px;
-  width: 80%;
-}
-
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
 }
 
 .card {
@@ -45,8 +47,18 @@ a {
   overflow: hidden;
 }
 
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .sm {
-  height: 200px;
-  width: 250px;
-  margin: 10px auto;
+  margin: 10px;
+  flex-basis: 26%;
+}
+
+.xsm {
+  margin: 10px;
+  flex-basis: 26%;
 }

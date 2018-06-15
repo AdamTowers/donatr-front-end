@@ -75,8 +75,8 @@ class EditDonorAccount extends Component {
     )
 
     return (
-      <div>
-        <form onSubmit={(event) => this.handleSubmit(event)}>
+      <div className='container'>
+        <form className='card med' onSubmit={(event) => this.handleSubmit(event)}>
           <h2>Edit Account</h2>
           <input
             type='text'
