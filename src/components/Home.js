@@ -44,12 +44,12 @@ class Home extends Component {
 
     return (
       <div>
-        <div>
-          <h1>Donatr</h1>
-          <h3>Crowd-sourcing for disaster relief.</h3>
+        <div className='container logo-container'>
+          <h1 className='logo'>Donatr</h1>
+          <h3 className='tagline'>Crowd-sourcing for disaster relief.</h3>
         </div>
 
-        <div>
+        <div className='container'>
           <h4>Current Crisis Funds</h4>
           <input
             type='text'
