@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchFunds } from '../actions/index';
 import FundCard from './FundCard'
+import logo from '../images/donatr-logo.png'
 
 class Home extends Component {
   state = {
@@ -45,7 +46,7 @@ class Home extends Component {
     return (
       <div className='container'>
         <div className='logo-container'>
-          <h1 className='logo'>Donatr</h1>
+          <img className='logo-image' src={logo} alt='Donatr Logo' />
           <h2 className='tagline'>Crowd-sourcing for disaster relief.</h2>
         </div>
 

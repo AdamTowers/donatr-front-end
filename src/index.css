@@ -94,6 +94,11 @@ h1, h2 {
   font-weight: 200;
 }
 
+.logo-image {
+  max-width: 250px;
+  width: 45%;
+}
+
 .logo {
   margin-top: 0px;
   margin-bottom: -15px;
