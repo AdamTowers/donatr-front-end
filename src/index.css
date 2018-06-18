@@ -1,11 +1,7 @@
 body {
   margin: 0px;
   padding: 0px;
-  font-family: sans-serif;
-}
-
-a {
-  color: white;
+  font-family: helvetica, sans-serif;
 }
 
 button {
@@ -20,6 +16,12 @@ textarea, select, input, button {
   outline: none;
 }
 
+h1, h2, h3 {
+  font-weight: 200;
+}
+
+/* APP */
+
 .app-container {
   background: linear-gradient(to right, #2D0083, #2BA5FF);
   position: absolute;
@@ -29,6 +31,8 @@ textarea, select, input, button {
   text-align: center;
 }
 
+/* NAVIGATION */
+
 .navbar {
   position: fixed;
   width: 100%;
@@ -37,6 +41,7 @@ textarea, select, input, button {
 }
 
 .navbar a {
+  color: white;
   text-decoration: none;
 }
 
@@ -52,7 +57,7 @@ textarea, select, input, button {
 
 .nav-link {
   display: inline-block;
-  padding: 5px;
+  padding: 5px 7px;
   margin: 0px 5px;
   border-radius: 3px;
 }
@@ -66,17 +71,20 @@ textarea, select, input, button {
   color: black;
 }
 
+/* SECONDARY CONTAINER */
+
 .container {
   margin: 0px auto;
   max-width: 960px;
 }
 
+/* HOME HEADERS AND SEARCH BAR */
+
 .logo-container {
   margin: 50px auto;
   color: white;
   text-shadow: 2px 2px 4px rgba(#2d0083, 0.75);
-  font-family: 'Montserrat';
-  font-weight: 100;
+  font-weight: 200;
 }
 
 .logo {
@@ -91,7 +99,8 @@ textarea, select, input, button {
 
 .funds-header {
   color: white;
-  font-family: 'Montserrat';
+  /* font-family: 'Montserrat'; */
+  font-weight: 200;
   margin-bottom: 10px;
 }
 
@@ -122,6 +131,20 @@ textarea, select, input, button {
     color: rgba(255, 255, 255, 0.35);
  }
 
+ /* FLEX CONTAINERS */
+
+ .flex {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+ }
+
+ .center {
+   align-items: center;
+ }
+
+ /* CARDS */
+
 .card {
   text-align: left;
   background: rgb(245, 245, 245);
@@ -134,10 +157,21 @@ textarea, select, input, button {
   overflow: hidden;
 }
 
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.card h2 {
+  font-weight: 200;
+}
+
+
+.login {
+  text-align: center;
+  width: 50%;
+  max-width: 200px;
+}
+
+.register {
+  text-align: center;
+  width: 80%;
+  max-width: 640px;
 }
 
 .sm {
