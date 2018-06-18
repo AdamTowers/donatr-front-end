@@ -24,9 +24,7 @@ class App extends Component {
         <div className='app-container'>
           <div className='navbar'>
             <div className='nav-left'>
-              <div className='nav-item'>
-                <NavLink to='/'>Home</NavLink>
-              </div>
+              <NavLink className='nav-link' to='/'>Home</NavLink>
             </div>
             { loggedIn ?
               <div className='nav-right'>
