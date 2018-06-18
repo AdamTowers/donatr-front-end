@@ -13,14 +13,20 @@ export default class FundCard extends Component {
         <div className='fund-card-image-container'>
           <img className='fund-card-image' src={this.props.fund.picture} />
         </div>
-        <h4 onClick={(event) => this.handleFundClick(event)}>{this.props.fund.title}</h4>
+        {
+          this.props.fund.title.length > 40 ?
+          <h3 onClick={(event) => this.handleFundClick(event)}>{this.props.fund.title.slice(0, 40)}...</h3>
+          :
+          <h3 onClick={(event) => this.handleFundClick(event)}>{this.props.fund.title}</h3>
+        }
+
         <h5>{this.props.fund.organization_name}</h5>
         <p>${this.props.fund.raised}/<strong>${this.props.fund.goal}</strong> goal reached</p>
         <Line
           percent={percent}
-          strokeWidth='6'
+          strokeWidth='5'
           strokeColor='rgb(236, 144, 35)'
-          trailWidth='6'
+          trailWidth='5'
           />
       </div>
     )

@@ -46,7 +46,7 @@ class Home extends Component {
       <div>
         <div className='container logo-container'>
           <h1 className='logo'>Donatr</h1>
-          <h3 className='tagline'>Crowd-sourcing for disaster relief.</h3>
+          <h2 className='tagline'>Crowd-sourcing for disaster relief.</h2>
         </div>
 
         <div className='container'>

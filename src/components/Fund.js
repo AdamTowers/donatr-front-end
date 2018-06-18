@@ -59,7 +59,7 @@ class Fund extends Component {
     return (
       <div className='card container'>
         <div>
-          <h2>{selectedFund.title}</h2>
+          <h1>{selectedFund.title}</h1>
           <h3 onClick={(event) => this.handleOrgClick(event)}>{selectedFund.organization_name}</h3>
           <p>{selectedFund.description}</p>
         </div>
