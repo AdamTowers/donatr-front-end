@@ -75,38 +75,48 @@ class EditDonorAccount extends Component {
     )
 
     return (
-      <div className='container'>
-        <form className='card med' onSubmit={(event) => this.handleSubmit(event)}>
+      <div className='flex center'>
+        <form className='card register' onSubmit={(event) => this.handleSubmit(event)}>
           <h2>Edit Account</h2>
+          <div className='flex'>
+            <input
+              className='text-input input-flex'
+              type='text'
+              name='username'
+              value={this.state.username}
+              placeholder='Username'
+              onChange={(event) => this.handleChange(event)}
+            />
+            <input
+              className='text-input input-flex-half'
+              type='text'
+              name='first_name'
+              value={this.state.first_name}
+              placeholder='First name'
+              onChange={(event) => this.handleChange(event)}
+            />
+            <input
+              className='text-input input-flex-half'
+              type='text'
+              name='last_name'
+              value={this.state.last_name}
+              placeholder='Last name'
+              onChange={(event) => this.handleChange(event)}
+            />
+            <input
+              className='text-input input-flex'
+              type='text'
+              name='email'
+              value={this.state.email}
+              placeholder='Email'
+              onChange={(event) => this.handleChange(event)}
+            />
           <input
-            type='text'
-            name='username'
-            value={this.state.username}
-            placeholder='Username'
-            onChange={(event) => this.handleChange(event)}
-          />
-          <input
-            type='text'
-            name='first_name'
-            value={this.state.first_name}
-            placeholder='First name'
-            onChange={(event) => this.handleChange(event)}
-          />
-          <input
-            type='text'
-            name='last_name'
-            value={this.state.last_name}
-            placeholder='Last name'
-            onChange={(event) => this.handleChange(event)}
-          />
-          <input
-            type='text'
-            name='email'
-            value={this.state.email}
-            placeholder='Email'
-            onChange={(event) => this.handleChange(event)}
-          />
-        <input type='submit' value='Save'/>
+            className='submit-button button-margin'
+            type='submit'
+            value='Save'
+            />
+          </div>
         </form>
         { this.state.errors.length > 0 ? <div>{errors}</div> : ''}
       </div>
