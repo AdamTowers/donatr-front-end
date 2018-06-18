@@ -81,13 +81,14 @@ h1, h2 {
 
 .container {
   margin: 0px auto;
+  padding: 50px 10px;
   max-width: 960px;
 }
 
 /* HOME HEADERS AND SEARCH BAR */
 
 .logo-container {
-  margin: 75px auto;
+  margin: 50px auto;
   color: white;
   text-shadow: 2px 2px 4px rgba(#2d0083, 0.75);
   font-weight: 200;
@@ -134,6 +135,15 @@ h1, h2 {
 
 .search-bar::-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.35);
+ }
+
+ .name {
+   font-size: 3em;
+ }
+
+ .bio {
+   display: inline-block;
+   max-width: 600px;
  }
 
  .white-text {

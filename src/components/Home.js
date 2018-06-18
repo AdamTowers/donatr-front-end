@@ -43,13 +43,13 @@ class Home extends Component {
     }
 
     return (
-      <div>
-        <div className='container logo-container'>
+      <div className='container'>
+        <div className='logo-container'>
           <h1 className='logo'>Donatr</h1>
           <h2 className='tagline'>Crowd-sourcing for disaster relief.</h2>
         </div>
 
-        <div className='container'>
+        <div>
           <h4 className='funds-header'>Current Crisis Funds</h4>
           <input
             className='search-bar'
@@ -60,7 +60,7 @@ class Home extends Component {
             />
         </div>
 
-        <div className='container flex'>
+        <div className='flex'>
           { funds.length > 0 ? funds : <p className='white-text'>No funds match your search.</p>}
         </div>
       </div>
