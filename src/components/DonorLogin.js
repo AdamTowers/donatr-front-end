@@ -52,6 +52,7 @@ export default class DonorLogin extends Component {
           <form onSubmit={(event) => this.handleSubmit(event)}>
             <h2>Donor Login</h2>
             <input
+              className='text-input'
               type='text'
               name='username'
               value={this.state.username}
@@ -59,18 +60,19 @@ export default class DonorLogin extends Component {
               onChange={(event) => this.handleChange(event)}
             />
             <input
+              className='text-input'
               type='password'
               name='password'
               value={this.state.password}
               placeholder='Password'
               onChange={(event) => this.handleChange(event)}
             />
-            <input type='submit' />
+          <input className='submit-button' type='submit' value='Sign In' />
           </form>
-          { this.state.error ? <p>{this.state.error}</p> : ''}
-          <div>
-            <p>Not a member?</p>
-            <p>Sign up as a <NavLink to='/donor-register'>donor</NavLink></p>
+          { this.state.error ? <div className='errors-box'><p>{this.state.error}</p></div> : ''}
+          <div className='sign-up'>
+            <p>Not a member?<br/>
+            Sign up as a <NavLink to='/donor-register'>donor</NavLink></p>
           </div>
         </div>
       </div>
