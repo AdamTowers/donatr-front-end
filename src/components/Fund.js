@@ -6,7 +6,8 @@ import { Line } from 'rc-progress';
 
 class Fund extends Component {
   state = {
-    donationAmount: ''
+    donationAmount: '',
+    thankYouMessage: ''
   }
 
   componentDidMount() {
@@ -111,8 +112,8 @@ class Fund extends Component {
                 </form>
                 :
                 <div>
-                  <p>Login to make a donation</p>
-                  <button onClick={() => this.props.history.push('/login')}>Login</button>
+                  <p><button onClick={() => this.props.history.push('/donor-login')}>Login</button> to make a donation</p>
+
                 </div>
               }
 

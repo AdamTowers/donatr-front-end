@@ -99,7 +99,7 @@ export default class UserRegister extends Component {
                 onChange={(event) => this.handleChange(event)}
               />
               <input
-                className='submit-button'
+                className='submit-button button-margin'
                 type='submit'
                 value='Sign Up'
                 />
