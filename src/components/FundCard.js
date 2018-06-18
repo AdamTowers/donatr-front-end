@@ -11,7 +11,10 @@ export default class FundCard extends Component {
     return (
       <div className='card sm' onClick={(event) => this.handleFundClick(event)}>
         <div className='fund-image-container img-container-sm'>
-          <img className='fund-image' src={this.props.fund.picture} alt={this.props.fund.title + ' image'} />
+          <img className='fund-image'
+            src={this.props.fund.picture}
+            alt={this.props.fund.title + ' image'}
+            />
         </div>
         {
           this.props.fund.title.length > 40 ?
@@ -25,7 +28,7 @@ export default class FundCard extends Component {
         <Line
           percent={percent}
           strokeWidth='5'
-          strokeColor='rgb(236, 144, 35)'
+          strokeColor='#ff9c28'
           trailWidth='5'
           />
       </div>

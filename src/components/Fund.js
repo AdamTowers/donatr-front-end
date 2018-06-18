@@ -83,7 +83,7 @@ class Fund extends Component {
                   className='round-corners'
                   percent={percent}
                   strokeWidth='10'
-                  strokeColor='#ec9023'
+                  strokeColor='#ff9c28'
                   trailWidth='10'
                   strokeLinecap='butt'
                   />
