@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { selectedFund } from '../actions/index'
 import { updateFund } from '../actions/index'
+import { Line } from 'rc-progress';
 
 class Fund extends Component {
   state = {
@@ -56,35 +57,67 @@ class Fund extends Component {
 
   render() {
     const selectedFund = this.props.selectedFund
+    // let percent = 0
+    // if (selectedFund.percent_raised) {
+
+    const percent = selectedFund.percent_raised > 100 ? 100 : selectedFund.percent_raised
+    // }
     return (
-      <div className='card container'>
-        <div>
-          <h1>{selectedFund.title}</h1>
-          <h3 onClick={(event) => this.handleOrgClick(event)}>{selectedFund.organization_name}</h3>
-          <p>{selectedFund.description}</p>
-        </div>
+      <div className='flex center'>
+        <div className='container card single-card'>
+          <div className='fund-image-container img-container-lg'>
+            <img className='fund-image' src={selectedFund.picture} />
+          </div>
 
-        <div>
-          <h3>${selectedFund.raised}/${selectedFund.goal} raised</h3>
-          <h5>{selectedFund.donation_count} donations</h5>
-          {
-            localStorage.getItem('token') ?
-            <form onSubmit={(event) => this.handleSubmit(event)}>
-              <input
-                type='number'
-                placeholder='$'
-                value={this.state.donationAmount}
-                onChange={(event) => this.handleChange(event)}
-                />
-              <input type='submit' value='Donate' />
-            </form>
-            :
-            <div>
-              <p>Login to make a donation</p>
-              <button onClick={() => this.props.history.push('/login')}>Login</button>
+          <div className='flex'>
+            <div className='flex-half'>
+              <h1>{selectedFund.title}</h1>
+              <h3 onClick={(event) => this.handleOrgClick(event)}>{selectedFund.organization_name}</h3>
+              <p>{selectedFund.description}</p>
             </div>
-          }
 
+            <div className='flex-half'>
+              <div className='input-flex'>
+                <h2>${selectedFund.raised}/<strong>${selectedFund.goal}</strong> raised</h2>
+              </div>
+              <div className='input-flex'>
+                <Line
+                  className='round-corners'
+                  percent={percent}
+                  strokeWidth='10'
+                  strokeColor='rgb(236, 144, 35)'
+                  trailWidth='10'
+                  strokeLinecap='butt'
+                  />
+              </div>
+
+              {
+                localStorage.getItem('token') ?
+                <form onSubmit={(event) => this.handleSubmit(event)}>
+                  <div className='flex'>
+                    <input
+                      className='text-input input-flex-half'
+                      type='number'
+                      placeholder='$'
+                      value={this.state.donationAmount}
+                      onChange={(event) => this.handleChange(event)}
+                      />
+                    <input
+                      className='input-flex-quarter submit-button'
+                      type='submit'
+                      value='Donate'
+                      />
+                  </div>
+                </form>
+                :
+                <div>
+                  <p>Login to make a donation</p>
+                  <button onClick={() => this.props.history.push('/login')}>Login</button>
+                </div>
+              }
+
+            </div>
+          </div>
         </div>
       </div>
     )

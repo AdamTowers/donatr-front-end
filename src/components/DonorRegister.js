@@ -59,7 +59,7 @@ export default class UserRegister extends Component {
             <h2>Donor Registration</h2>
             <div class='flex'>
               <input
-                className='text-input text-input-flex'
+                className='text-input input-flex'
                 type='text'
                 name='username'
                 value={this.state.username}
@@ -67,7 +67,7 @@ export default class UserRegister extends Component {
                 onChange={(event) => this.handleChange(event)}
               />
               <input
-                className='text-input text-input-flex-half'
+                className='text-input input-flex-half'
                 type='text'
                 name='first_name'
                 value={this.state.first_name}
@@ -75,7 +75,7 @@ export default class UserRegister extends Component {
                 onChange={(event) => this.handleChange(event)}
               />
               <input
-                className='text-input text-input-flex-half'
+                className='text-input input-flex-half'
                 type='text'
                 name='last_name'
                 value={this.state.last_name}
@@ -83,7 +83,7 @@ export default class UserRegister extends Component {
                 onChange={(event) => this.handleChange(event)}
               />
               <input
-                className='text-input text-input-flex'
+                className='text-input input-flex'
                 type='text'
                 name='email'
                 value={this.state.email}
@@ -91,19 +91,19 @@ export default class UserRegister extends Component {
                 onChange={(event) => this.handleChange(event)}
               />
               <input
-                className='text-input text-input-flex'
+                className='text-input input-flex'
                 type='password'
                 name='password'
                 value={this.state.password}
                 placeholder='Password'
                 onChange={(event) => this.handleChange(event)}
               />
+              <input
+                className='submit-button'
+                type='submit'
+                value='Sign Up'
+                />
             </div>
-            <input
-              className='submit-button'
-              type='submit'
-              value='Sign Up'
-              />
           </form>
           { this.state.errors.length > 0 ? <div className='errors-box'>{errors}</div> : ''}
         </div>

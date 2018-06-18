@@ -2,14 +2,19 @@ body {
   margin: 0px;
   padding: 0px;
   font-family: helvetica, sans-serif;
+  background: linear-gradient(to bottom, #23006f, #04b3ff);
+  background-attachment: fixed;
 }
 
 button {
-  background-color: cyan;
-  margin: 3px;
   border-style: none;
   border-radius: 3px;
-  font-size: .75em;
+  padding: 7px 15px;
+  font-size: .85em;
+  font-weight: 300;
+  color: white;
+  margin: 10px 5px;
+  background: #2BA5FF;
 }
 
 textarea, select, input, button {
@@ -23,7 +28,6 @@ h1, h2 {
 /* APP */
 
 .app-container {
-  background: linear-gradient(to right, #2D0083, #04b3ff);
   position: absolute;
   min-height: 100%;
   min-width: 100%;
@@ -37,7 +41,7 @@ h1, h2 {
   width: 100%;
   font-size: .85em;
   font-weight: 200;
-  padding: 15px 0px;
+  padding: 20px 0px;
   z-index: 1000;
 }
 
@@ -59,7 +63,7 @@ h1, h2 {
 .nav-link {
   display: inline-block;
   padding: 5px 0px;
-  margin: 0px 5px;
+  margin: 0px 10px;
   border-radius: 3px;
 }
 
@@ -132,6 +136,11 @@ h1, h2 {
     color: rgba(255, 255, 255, 0.35);
  }
 
+ .white-text {
+   color: white;
+   font-weight: 200;
+ }
+
  /* FLEX CONTAINERS */
 
  .flex {
@@ -147,22 +156,39 @@ h1, h2 {
    align-items: center;
  }
 
+ .flex-half {
+   flex: 2;
+   max-width: 50%;
+   flex-basis: 90%;
+ }
+
  /* CARDS */
 
 .card {
   text-align: left;
   background: rgb(245, 245, 245);
-  -webkit-box-shadow: 3px 3px 15px 0px rgba(6, 0, 19, 0.25);
-  -moz-box-shadow: 3px 3px 15px 0px rgba(6, 0, 19, 0.25);
   box-shadow: 3px 3px 15px 0px rgba(6, 0, 19, 0.25);
   border: 1px solid white;
   border-radius: 3px;
   padding: 20px;
   overflow: hidden;
+  margin: 10px;
+}
+
+.single-card {
+  margin: 20px;
 }
 
 .card h2 {
   font-weight: 200;
+}
+
+.sm {
+  flex-basis: 26%;
+}
+
+.xsm {
+  flex-basis: 18%;
 }
 
 
@@ -184,7 +210,7 @@ h1, h2 {
 .text-input {
   display: block;
   width: 85%;
-  margin: 10px auto;
+  margin: 10px 0px;
   padding: 10px 13px;
   font-size: .85em;
   font-weight: 300;
@@ -193,28 +219,39 @@ h1, h2 {
   background: rgb(235, 235, 235);
 }
 
-.text-input-flex {
-  flex: 1;
-  flex-basis: 100%;
+.input-flex {
+  flex: auto;
   margin: 5px 5px;
 }
 
-.text-input-flex-half {
+.input-flex-half {
   flex: 2;
   flex-basis: 20%;
   margin: 5px 5px;
 }
 
+.input-flex-quarter {
+  flex: 1;
+  margin: 5px 5px;
+}
+
+.round-corners {
+  border-radius: 3px;
+}
+
 .submit-button {
-  display: block;
+  display: inline-block;
   border-style: none;
   border-radius: 3px;
   padding: 7px 15px;
   font-size: .85em;
   font-weight: 300;
   color: white;
-  margin: 10px auto;
   background: #2BA5FF;
+}
+
+.submit-button:hover {
+  background: #81c9ff;
 }
 
 .register {
@@ -238,24 +275,21 @@ h1, h2 {
   margin: 3px 0px;
 }
 
-.sm {
-  margin: 10px;
-  flex-basis: 26%;
-}
-
-.xsm {
-  margin: 10px;
-  flex-basis: 18%;
-}
-
-.fund-card-image-container {
+.fund-image-container {
   display: flex;
   width: 100%;
-  max-height: 75px;
   overflow: hidden;
   align-items: center;
 }
 
-.fund-card-image {
+.img-container-lg {
+  max-height: 250px;
+}
+
+.img-container-sm {
+  max-height: 75px;
+}
+
+.fund-image {
   width: 100%;
 }

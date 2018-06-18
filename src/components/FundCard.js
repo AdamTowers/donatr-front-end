@@ -10,8 +10,8 @@ export default class FundCard extends Component {
     const percent = this.props.fund.percent_raised > 100 ? 100 : this.props.fund.percent_raised
     return (
       <div className='card sm' onClick={(event) => this.handleFundClick(event)}>
-        <div className='fund-card-image-container'>
-          <img className='fund-card-image' src={this.props.fund.picture} />
+        <div className='fund-image-container img-container-sm'>
+          <img className='fund-image' src={this.props.fund.picture} />
         </div>
         {
           this.props.fund.title.length > 40 ?

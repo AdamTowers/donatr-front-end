@@ -61,7 +61,7 @@ class Home extends Component {
         </div>
 
         <div className='container flex'>
-          { funds.length > 0 ? funds : <p>No funds match your search.</p>}
+          { funds.length > 0 ? funds : <p className='white-text'>No funds match your search.</p>}
         </div>
       </div>
     )
