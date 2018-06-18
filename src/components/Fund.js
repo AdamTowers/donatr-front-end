@@ -67,7 +67,7 @@ class Fund extends Component {
       <div className='flex center'>
         <div className='container card single-card'>
           <div className='fund-image-container img-container-lg'>
-            <img className='fund-image' src={selectedFund.picture} />
+            <img className='fund-image' src={selectedFund.picture} alt={selectedFund.title + ' image'} />
           </div>
 
           <div className='flex'>

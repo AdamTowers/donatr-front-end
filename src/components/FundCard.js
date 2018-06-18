@@ -11,7 +11,7 @@ export default class FundCard extends Component {
     return (
       <div className='card sm' onClick={(event) => this.handleFundClick(event)}>
         <div className='fund-image-container img-container-sm'>
-          <img className='fund-image' src={this.props.fund.picture} />
+          <img className='fund-image' src={this.props.fund.picture} alt={this.props.fund.title + ' image'} />
         </div>
         {
           this.props.fund.title.length > 40 ?
