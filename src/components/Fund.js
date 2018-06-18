@@ -58,11 +58,8 @@ class Fund extends Component {
 
   render() {
     const selectedFund = this.props.selectedFund
-    // let percent = 0
-    // if (selectedFund.percent_raised) {
-
     const percent = selectedFund.percent_raised > 100 ? 100 : selectedFund.percent_raised
-    // }
+
     return (
       <div className='flex center'>
         <div className='container card single-card'>
@@ -86,7 +83,7 @@ class Fund extends Component {
                   className='round-corners'
                   percent={percent}
                   strokeWidth='10'
-                  strokeColor='rgb(236, 144, 35)'
+                  strokeColor='#ec9023'
                   trailWidth='10'
                   strokeLinecap='butt'
                   />
