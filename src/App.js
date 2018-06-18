@@ -22,16 +22,20 @@ class App extends Component {
     return (
       <Router>
         <div className='app-container'>
-          <div>
-            <NavLink to='/'>Donatr</NavLink>
+          <div className='navbar'>
+            <div className='nav-left'>
+              <div className='nav-item'>
+                <NavLink to='/'>Home</NavLink>
+              </div>
+            </div>
             { loggedIn ?
-              <div>
-                <NavLink to='/account'>Account</NavLink>
-                <NavLink to='/' onClick={() => this.handleLogout()}>Logout</NavLink>
+              <div className='nav-right'>
+                <NavLink className='nav-link' to='/account'>Account</NavLink>
+                <NavLink className='nav-link outline' to='/' onClick={() => this.handleLogout()}>Logout</NavLink>
               </div>
               :
-              <div>
-                <NavLink to='/donor-login'>Login</NavLink>
+              <div className='nav-right'>
+                <NavLink className='nav-link outline' to='/donor-login'>Login</NavLink>
               </div>
             }
           </div>

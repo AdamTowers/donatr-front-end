@@ -29,6 +29,43 @@ textarea, select, input, button {
   text-align: center;
 }
 
+.navbar {
+  position: fixed;
+  width: 100%;
+  font-family: 'Montserrat';
+  font-size: .75em;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.nav-left {
+  margin-left: 15px;
+  float: left;
+}
+
+.nav-right {
+  margin-right: 15px;
+  float: right;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 5px;
+  margin: 0px 5px;
+  border-radius: 3px;
+}
+
+.outline {
+  border: 1px solid white;
+}
+
+.outline:hover {
+  background: white;
+  color: black;
+}
+
 .container {
   margin: 0px auto;
   max-width: 960px;
