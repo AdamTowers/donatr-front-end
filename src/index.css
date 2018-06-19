@@ -1,3 +1,5 @@
+/* DEFAULTS */
+
 body {
   margin: 0px;
   padding: 0px;
@@ -161,7 +163,7 @@ h1, h2 {
    font-weight: 200;
  }
 
- /* FLEX CONTAINERS */
+ /* CONTAINERS */
 
  .flex {
    display: flex;
@@ -177,12 +179,16 @@ h1, h2 {
  }
 
  .flex-half {
-   flex: 2;
-   max-width: 50%;
-   flex-basis: 90%;
+   flex: 1;
+   min-width: 300px;
+   flex-basis: 50%;
  }
 
- /* CARDS */
+ .sm {
+   flex: auto;
+   min-width: 200px;
+   max-width: 26%;
+ }
 
 .card {
   text-align: left;
@@ -202,15 +208,6 @@ h1, h2 {
 .card h2 {
   font-weight: 200;
 }
-
-.sm {
-  flex-basis: 26%;
-}
-
-.xsm {
-  flex-basis: 18%;
-}
-
 
 .login {
   text-align: center;
@@ -314,6 +311,8 @@ h1, h2 {
   font-size: .85em;
   margin: 3px 0px;
 }
+
+/* IMAGES */
 
 .fund-image-container {
   display: flex;

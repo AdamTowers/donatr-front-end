@@ -51,7 +51,7 @@ class Home extends Component {
         </div>
 
         <div>
-          <h4 className='funds-header'>Current Crisis Funds</h4>
+          <h4 className='funds-header'>Current Funds</h4>
           <input
             className='search-bar'
             type='text'
