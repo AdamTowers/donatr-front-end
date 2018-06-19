@@ -7,7 +7,6 @@ import { Line } from 'rc-progress';
 class Fund extends Component {
   state = {
     donationAmount: '',
-    thankYouMessage: '',
     errors: []
   }
 
@@ -48,14 +47,9 @@ class Fund extends Component {
       .then(json => {
         if (json.errors) {
           this.setState({
-            thankYouMessage: '',
             errors: json.errors
           })
         } else {
-          this.setState({
-            thankYouMessage: 'Thank you for your donation!',
-            errors: []
-          })
           this.props.dispatch(updateFund(json.amount))
         }
       })
@@ -128,16 +122,6 @@ class Fund extends Component {
                   <p><button onClick={() => this.props.history.push('/donor-login')}>Login</button> to make a donation</p>
                 </div>
               }
-
-              {
-                this.state.thankYouMessage.length > 0 ?
-                <div className='success-box'>
-                  <p>{this.state.thankYouMessage}</p>
-                </div>
-                :
-                ''
-              }
-
 
               {
                 this.state.errors.length > 0 ?
