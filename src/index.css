@@ -1,27 +1,319 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  margin: 0px;
+  padding: 0px;
+  font-family: helvetica, sans-serif;
+  background: linear-gradient(to bottom, #23006f, #04b3ff);
+  background-attachment: fixed;
 }
+
+button {
+  border-style: none;
+  border-radius: 3px;
+  padding: 7px 15px;
+  font-size: .85em;
+  font-weight: 300;
+  color: white;
+  margin: 10px 5px;
+  background: #2BA5FF;
+}
+
+button:hover {
+  background: #81c9ff;
+}
+
+textarea, select, input, button {
+  outline: none;
+}
+
+h1, h2 {
+  font-weight: 200;
+}
+
+/* APP */
 
 .app-container {
-  border: 1px solid green;
-  padding: 20px;
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  text-align: center;
 }
 
-.cards-container {
-  border: 1px solid red;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+/* NAVIGATION */
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  font-size: .85em;
+  font-weight: 200;
+  padding: 20px 0px;
+  z-index: 1000;
 }
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-left {
+  margin-left: 15px;
+  float: left;
+}
+
+.nav-right {
+  margin-right: 15px;
+  float: right;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 5px 0px;
+  margin: 0px 10px;
+  border-radius: 3px;
+}
+
+.outline {
+  padding: 5px 7px;
+  border: 1px solid white;
+}
+
+.outline:hover {
+  background: white;
+  color: black;
+}
+
+/* SECONDARY CONTAINER */
+
+.container {
+  margin: 0px auto;
+  padding: 50px 10px;
+  max-width: 960px;
+}
+
+/* HOME HEADERS AND SEARCH BAR */
+
+.logo-container {
+  margin: 50px auto;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(#2d0083, 0.75);
+  font-weight: 200;
+}
+
+.logo-image {
+  max-width: 250px;
+  width: 45%;
+}
+
+.logo {
+  margin-top: 0px;
+  margin-bottom: -15px;
+  font-size: 4em;
+}
+
+.tagline {
+  font-size: 1.5em;
+}
+
+.funds-header {
+  color: white;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid white;
+  border-radius: 3px;
+  background: none;
+  padding: 7px 10px;
+  color: white;
+  font-size: 1em;
+  font-weight: 200;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.search-bar::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+    opacity: 1;
+}
+
+.search-bar:-ms-input-placeholder {
+    color: rgba(#ffffff, 0.35);
+}
+
+.search-bar::-ms-input-placeholder {
+    color: rgba(#ffffff, 0.35);
+ }
+
+ .name {
+   font-size: 3em;
+   margin-bottom: 10px;
+ }
+
+ .bio {
+   display: inline-block;
+   max-width: 600px;
+ }
+
+ .white-text {
+   color: white;
+   font-weight: 200;
+ }
+
+ /* FLEX CONTAINERS */
+
+ .flex {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+ }
+
+ .center {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   align-items: center;
+ }
+
+ .flex-half {
+   flex: 2;
+   max-width: 50%;
+   flex-basis: 90%;
+ }
+
+ /* CARDS */
 
 .card {
-  border: 1px solid blue;
+  text-align: left;
+  background: #f5f5f5;
+  box-shadow: 3px 3px 15px 0px rgba(#060013, 0.25);
+  border: 1px solid white;
+  border-radius: 3px;
   padding: 20px;
-  width: 20%;
-  height: 50%;
-  margin: 2%;
   overflow: hidden;
+  margin: 10px;
+}
+
+.single-card {
+  margin: 20px;
+}
+
+.card h2 {
+  font-weight: 200;
+}
+
+.sm {
+  flex-basis: 26%;
+}
+
+.xsm {
+  flex-basis: 18%;
+}
+
+
+.login {
+  text-align: center;
+  width: 50%;
+  max-width: 260px;
+}
+
+.sign-up {
+  margin: 15px 0px;
+  font-size: .85em;
+}
+
+.sign-up a {
+  color: black;
+}
+
+.text-input {
+  display: block;
+  width: 85%;
+  margin: 10px 0px;
+  padding: 10px 13px;
+  font-size: .85em;
+  font-weight: 300;
+  border-style: none;
+  border-radius: 3px;
+  background: #ebebeb;
+}
+
+.input-flex {
+  flex: auto;
+  margin: 5px 5px;
+}
+
+.input-flex-half {
+  flex: 2;
+  flex-basis: 20%;
+  margin: 5px 5px;
+}
+
+.input-flex-quarter {
+  flex: 1;
+  margin: 5px 5px;
+}
+
+.round-corners {
+  border-radius: 3px;
+}
+
+.submit-button {
+  display: inline-block;
+  border-style: none;
+  border-radius: 3px;
+  padding: 7px 15px;
+  font-size: .85em;
+  font-weight: 300;
+  color: white;
+  background: #2BA5FF;
+}
+
+.submit-button:hover {
+  background: #81c9ff;
+}
+
+.button-margin {
+  margin-top: 5px;
+}
+
+.register {
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+}
+
+.errors-box {
+  max-width: 400px;
+  margin: 10px auto;
+  width: 80%;
+  padding: 5px;
+  border: 1px solid red;
+  border-radius: 3px;
+}
+
+.errors-box p {
+  color: red;
+  font-size: .85em;
+  margin: 3px 0px;
+}
+
+.fund-image-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  align-items: center;
+}
+
+.img-container-lg {
+  max-height: 250px;
+}
+
+.img-container-sm {
+  max-height: 75px;
+}
+
+.fund-image {
+  width: 100%;
 }

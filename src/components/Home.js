@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchFunds } from '../actions/index';
 import FundCard from './FundCard'
+import logo from '../images/donatr-logo.png'
 
 class Home extends Component {
   state = {
@@ -43,15 +44,16 @@ class Home extends Component {
     }
 
     return (
-      <div>
-        <div>
-          <h1>Donatr</h1>
-          <h3>For all charitable giving.</h3>
+      <div className='container'>
+        <div className='logo-container'>
+          <img className='logo-image' src={logo} alt='Donatr Logo' />
+          <h2 className='tagline'>Crowd-sourcing for disaster relief.</h2>
         </div>
 
         <div>
-          <h4>Current Crisis Funds</h4>
+          <h4 className='funds-header'>Current Crisis Funds</h4>
           <input
+            className='search-bar'
             type='text'
             placeholder='Search funds'
             value={this.state.filter}
@@ -59,8 +61,8 @@ class Home extends Component {
             />
         </div>
 
-        <div className='cards-container'>
-          { funds.length > 0 ? funds : <p>No funds match your search.</p>}
+        <div className='flex'>
+          { funds.length > 0 ? funds : <p className='white-text'>No funds match your search.</p>}
         </div>
       </div>
     )

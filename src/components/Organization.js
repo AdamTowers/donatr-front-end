@@ -17,13 +17,13 @@ class Organization extends Component {
     const funds = selectedOrg.funds.map(fund => <FundCard key={fund.id} fund={fund} history={this.props.history} />)
 
     return (
-      <div>
+      <div className='container'>
         <div>
-          <h1>{selectedOrg.name}</h1>
-          <p>{selectedOrg.bio}</p>
+          <h1 className='name white-text'>{selectedOrg.name}</h1>
+          <p className='bio white-text'>{selectedOrg.bio}</p>
         </div>
 
-        <div  className='cards-container'>
+        <div  className='cards-container flex'>
           {funds}
         </div>
       </div>
