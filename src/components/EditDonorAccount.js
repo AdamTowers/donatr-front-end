@@ -117,8 +117,13 @@ class EditDonorAccount extends Component {
             value='Save'
             />
           </div>
+          {
+            this.state.errors.length > 0 ?
+            <div class='errors-box'>{errors}</div>
+            :
+            ''
+          }
         </form>
-        { this.state.errors.length > 0 ? <div>{errors}</div> : ''}
       </div>
     )
   }
