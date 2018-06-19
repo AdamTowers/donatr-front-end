@@ -76,7 +76,7 @@ class Fund extends Component {
 
             <div className='flex-half'>
               <div className='input-flex'>
-                <h2>${selectedFund.raised}/<strong>${selectedFund.goal}</strong> raised</h2>
+                <h2>${parseFloat(Math.round(selectedFund.raised * 100) / 100).toFixed(2)}/<strong>${parseFloat(Math.round(selectedFund.goal * 100) / 100).toFixed(2)}</strong> raised</h2>
               </div>
               <div className='input-flex'>
                 <Line

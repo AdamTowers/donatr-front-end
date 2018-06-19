@@ -24,7 +24,7 @@ export default class FundCard extends Component {
         }
 
         <h5>{this.props.fund.organization_name}</h5>
-        <p>${this.props.fund.raised}/<strong>${this.props.fund.goal}</strong> goal reached</p>
+        <p>${parseFloat(Math.round(this.props.fund.raised * 100) / 100).toFixed(2)}/<strong>${parseFloat(Math.round(this.props.fund.goal * 100) / 100).toFixed(2)}</strong> reached</p>
         <Line
           percent={percent}
           strokeWidth='5'
