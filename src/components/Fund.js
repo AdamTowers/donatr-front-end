@@ -67,6 +67,15 @@ class Fund extends Component {
       <p key={i}>{error}</p>
     )
 
+    let color
+    if(percent === 100) {
+      color = "#74ad75"
+    } else if(percent < 100 && percent > 50) {
+      color = "#ff9c28"
+    } else {
+      color = "#da4e4e"
+    }
+
     return (
       <div className='flex center'>
         <div className='container card single-card'>
@@ -93,7 +102,7 @@ class Fund extends Component {
                   className='round-corners'
                   percent={percent}
                   strokeWidth='10'
-                  strokeColor='#ff9c28'
+                  strokeColor={color}
                   trailWidth='10'
                   strokeLinecap='butt'
                   />

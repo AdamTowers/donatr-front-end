@@ -171,6 +171,18 @@ h1, h2 {
    justify-content: center;
  }
 
+ .flex-left {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: left;
+ }
+
+ .flex-sm-item {
+   flex-basis: 100%;
+   margin-top: -5px;
+   margin-bottom: -20px;
+ }
+
  .center {
    position: absolute;
    width: 100%;
@@ -184,11 +196,16 @@ h1, h2 {
    flex-basis: 50%;
  }
 
- .sm {
-   flex: auto;
-   min-width: 200px;
-   max-width: 26%;
- }
+.sm {
+ flex: auto;
+ min-width: 200px;
+ max-width: 26%;
+}
+
+.align-bottom {
+  flex-basis: 100%;
+  align-self: flex-end;
+}
 
 .card {
   text-align: left;
@@ -286,13 +303,13 @@ h1, h2 {
   margin: 10px auto;
   width: 80%;
   padding: 5px;
-  border: 1px solid red;
+  border: 1px solid #da4e4e;
   border-radius: 3px;
   text-align: center;
 }
 
 .errors-box p {
-  color: red;
+  color: #da4e4e;
   font-size: .85em;
   margin: 3px 0px;
 }
@@ -301,13 +318,13 @@ h1, h2 {
   margin: 10px auto;
   width: 80%;
   padding: 5px;
-  border: 1px solid green;
+  border: 1px solid #74ad75;
   border-radius: 3px;
   text-align: center;
 }
 
 .success-box p {
-  color: green;
+  color: #74ad75;
   font-size: .85em;
   margin: 3px 0px;
 }
