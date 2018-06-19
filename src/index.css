@@ -17,6 +17,10 @@ button {
   background: #2BA5FF;
 }
 
+button:hover {
+  background: #81c9ff;
+}
+
 textarea, select, input, button {
   outline: none;
 }
