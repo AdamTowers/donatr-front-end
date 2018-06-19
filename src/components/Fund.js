@@ -7,7 +7,8 @@ import { Line } from 'rc-progress';
 class Fund extends Component {
   state = {
     donationAmount: '',
-    thankYouMessage: ''
+    thankYouMessage: '',
+    errors: []
   }
 
   componentDidMount() {
@@ -45,7 +46,11 @@ class Fund extends Component {
       })
       .then(res => res.json())
       .then(json => {
-        if (!json.errors) {
+        if (json.errors) {
+          this.setState({
+            errors: json.errors
+          })
+        } else {
           this.props.dispatch(updateFund(json.amount))
         }
       })
@@ -59,6 +64,9 @@ class Fund extends Component {
   render() {
     const selectedFund = this.props.selectedFund
     const percent = selectedFund.percent_raised > 100 ? 100 : selectedFund.percent_raised
+    const errors = this.state.errors.map((error, i) =>
+      <p key={i}>{error}</p>
+    )
 
     return (
       <div className='flex center'>
@@ -76,7 +84,10 @@ class Fund extends Component {
 
             <div className='flex-half'>
               <div className='input-flex'>
-                <h2>${parseFloat(Math.round(selectedFund.raised * 100) / 100).toFixed(2)}/<strong>${parseFloat(Math.round(selectedFund.goal * 100) / 100).toFixed(2)}</strong> raised</h2>
+                <h2>
+                  ${parseFloat(Math.round(selectedFund.raised * 100) / 100).toFixed(2)}/
+                  <strong>${parseFloat(Math.round(selectedFund.goal * 100) / 100).toFixed(2)}</strong> raised
+                </h2>
               </div>
               <div className='input-flex'>
                 <Line
@@ -110,8 +121,16 @@ class Fund extends Component {
                 :
                 <div>
                   <p><button onClick={() => this.props.history.push('/donor-login')}>Login</button> to make a donation</p>
-
                 </div>
+              }
+
+              {
+                this.state.errors.length > 0 ?
+                <div className='errors-box'>
+                  {errors}
+                </div>
+                :
+                ''
               }
 
             </div>
