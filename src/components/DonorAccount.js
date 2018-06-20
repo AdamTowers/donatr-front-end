@@ -21,6 +21,10 @@ class DonorAccount extends Component {
     }
   }
 
+  handleClick() {
+    this.props.history.push('/')
+  }
+
   render() {
     const donations =
      this.props.user.donations.map(donation =>
@@ -31,12 +35,22 @@ class DonorAccount extends Component {
         <div>
           <h1 className='name white-text'>{this.props.user.first_name} {this.props.user.last_name}</h1>
           <div className='account-buttons-container'>
-            <button onClick={() => this.props.history.push('/account/edit')}>Edit Account</button>
+            <button className='button-lg' onClick={() => this.props.history.push('/account/edit')}>Edit Account</button>
           </div>
-          <h3 className='white-text'>Recent Donations</h3>
-          <div className='flex'>
-            {donations}
-          </div>
+          {
+            this.props.user.donations.length > 0 ?
+            <div>
+              <h3 className='white-text'>Recent Donations</h3>
+              <div className='flex'>
+                {donations}
+              </div>
+            </div>
+            :
+            <div>
+              <p className='white-text'>You have no donations yet. <button className='button-sm'>Find Funds</button></p>
+            </div>
+          }
+
         </div>
       </div>
     )

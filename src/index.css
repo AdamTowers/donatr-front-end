@@ -11,16 +11,7 @@ body {
 button {
   border-style: none;
   border-radius: 3px;
-  padding: 7px 15px;
-  font-size: .85em;
   font-weight: 300;
-  color: white;
-  margin: 10px 5px;
-  background: #2BA5FF;
-}
-
-button:hover {
-  background: #81c9ff;
 }
 
 textarea, select, input, button {
@@ -348,4 +339,31 @@ h1, h2 {
 
 .fund-image {
   width: 100%;
+}
+
+/* BUTTONS */
+
+.button-lg {
+  padding: 7px 15px;
+  font-size: .85em;
+  font-weight: 300;
+  color: white;
+  margin: 10px 5px;
+  background: #2BA5FF;
+}
+
+.button-lg:hover {
+  background: #81c9ff;
+}
+
+.button-sm {
+  padding: 5px 10px;
+  font-weight: 300;
+  color: white;
+  margin: 7px 3px;
+  background: #959595;
+}
+
+.button-sm:hover {
+  background: #bebebe;
 }

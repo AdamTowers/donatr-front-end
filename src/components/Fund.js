@@ -134,7 +134,7 @@ class Fund extends Component {
                 </form>
                 :
                 <div>
-                  <p><button onClick={() => this.props.history.push('/donor-login')}>Login</button> to make a donation</p>
+                  <p><button className='button-sm' onClick={() => this.props.history.push('/donor-login')}>Login</button> to make a donation</p>
                 </div>
               }
 
