@@ -69,7 +69,7 @@ class Fund extends Component {
 
     let color
     if(percent === 100) {
-      color = "#74ad75"
+      color = "#1ec122"
     } else if(percent < 100 && percent > 50) {
       color = "#ff9c28"
     } else {
@@ -104,7 +104,7 @@ class Fund extends Component {
                   strokeWidth='10'
                   strokeColor={color}
                   trailWidth='10'
-                  strokeLinecap='butt'
+                  strokeLinecap='square'
                   />
               </div>
 

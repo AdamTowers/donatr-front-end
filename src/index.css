@@ -318,13 +318,13 @@ h1, h2 {
   margin: 10px auto;
   width: 80%;
   padding: 5px;
-  border: 1px solid #74ad75;
+  border: 1px solid #1ec122;
   border-radius: 3px;
   text-align: center;
 }
 
 .success-box p {
-  color: #74ad75;
+  color: #1ec122;
   font-size: .85em;
   margin: 3px 0px;
 }

@@ -34,7 +34,7 @@ export default function reducer(state = initialState, action) {
       return {...state, selectedFund: {
         ...state.selectedFund,
         raised: parseFloat(state.selectedFund.raised) + parseFloat(action.payload),
-        percent_raised: state.selectedFund.percent_raised + (action.payload/state.selectedFund.goal * 100),
+        percent_raised: state.selectedFund.percent_raised + (action.payload/state.selectedFund.goal * 100)
        }
       }
     default:

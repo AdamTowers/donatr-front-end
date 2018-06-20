@@ -11,7 +11,7 @@ export default class FundCard extends Component {
 
     let color
     if(percent === 100) {
-      color = "#74ad75"
+      color = "#1ec122"
     } else if(percent < 100 && percent > 50) {
       color = "#ff9c28"
     } else {
