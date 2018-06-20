@@ -18,12 +18,13 @@ class Organization extends Component {
 
     return (
       <div className='container'>
-        <div>
+        <div className='logo-container'>
           <h1 className='name white-text'>{selectedOrg.name}</h1>
           <p className='bio white-text'>{selectedOrg.bio}</p>
         </div>
 
-        <div  className='cards-container flex'>
+        <h3 className='white-text'>Current Funds</h3>
+        <div className='cards-container flex'>
           {funds}
         </div>
       </div>

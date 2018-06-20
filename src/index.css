@@ -91,14 +91,14 @@ h1, h2 {
   max-width: 960px;
 }
 
-/* HOME HEADERS AND SEARCH BAR */
-
 .logo-container {
   margin: 50px auto;
   color: white;
   text-shadow: 2px 2px 4px rgba(#2d0083, 0.75);
   font-weight: 200;
 }
+
+/* HOME HEADERS AND SEARCH BAR */
 
 .logo-image {
   max-width: 250px;
