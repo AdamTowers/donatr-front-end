@@ -13,7 +13,7 @@ Donatr is a crowd-sourcing app for charitable giving. Users can sign up as a don
 - [rc-progress](https://www.npmjs.com/package/rc-progress)
 - [react-loading](https://www.npmjs.com/package/react-loading)
 
-#### Back End
+#### [Back End](https://github.com/AdamTowers/donatr-back-end)
 - Ruby on Rails
 - BCrypt
 - [JWT](https://jwt.io/)
