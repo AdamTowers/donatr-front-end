@@ -23,7 +23,8 @@ class Organization extends Component {
           <p className='bio white-text'>{selectedOrg.bio}</p>
         </div>
 
-        <div  className='cards-container flex'>
+        <h3 className='white-text'>Current Funds</h3>
+        <div className='cards-container flex'>
           {funds}
         </div>
       </div>

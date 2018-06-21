@@ -33,8 +33,9 @@ export default function reducer(state = initialState, action) {
     case UPDATE_FUND:
       return {...state, selectedFund: {
         ...state.selectedFund,
-        raised: state.selectedFund.raised + action.payload,
-        donation_count: state.selectedFund.donation_count + 1 }
+        raised: parseFloat(state.selectedFund.raised) + parseFloat(action.payload),
+        percent_raised: state.selectedFund.percent_raised + (action.payload/state.selectedFund.goal * 100)
+       }
       }
     default:
       return state;

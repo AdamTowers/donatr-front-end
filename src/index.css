@@ -1,3 +1,5 @@
+/* DEFAULTS */
+
 body {
   margin: 0px;
   padding: 0px;
@@ -9,16 +11,7 @@ body {
 button {
   border-style: none;
   border-radius: 3px;
-  padding: 7px 15px;
-  font-size: .85em;
   font-weight: 300;
-  color: white;
-  margin: 10px 5px;
-  background: #2BA5FF;
-}
-
-button:hover {
-  background: #81c9ff;
 }
 
 textarea, select, input, button {
@@ -27,6 +20,10 @@ textarea, select, input, button {
 
 h1, h2 {
   font-weight: 200;
+}
+
+.loading-icon {
+  margin: 50px auto;
 }
 
 /* APP */
@@ -42,6 +39,7 @@ h1, h2 {
 
 .navbar {
   position: fixed;
+  background: linear-gradient(to bottom, rgba(35, 0, 111, 0.6), rgba(35, 0, 111, 0));
   width: 100%;
   font-size: .85em;
   font-weight: 200;
@@ -89,14 +87,13 @@ h1, h2 {
   max-width: 960px;
 }
 
-/* HOME HEADERS AND SEARCH BAR */
-
 .logo-container {
   margin: 50px auto;
   color: white;
-  text-shadow: 2px 2px 4px rgba(#2d0083, 0.75);
   font-weight: 200;
 }
+
+/* HOME HEADERS AND SEARCH BAR */
 
 .logo-image {
   max-width: 250px;
@@ -161,12 +158,24 @@ h1, h2 {
    font-weight: 200;
  }
 
- /* FLEX CONTAINERS */
+ /* CONTAINERS */
 
  .flex {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
+ }
+
+ .flex-left {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: left;
+ }
+
+ .flex-sm-item {
+   flex-basis: 100%;
+   margin-top: -5px;
+   margin-bottom: -20px;
  }
 
  .center {
@@ -177,12 +186,21 @@ h1, h2 {
  }
 
  .flex-half {
-   flex: 2;
-   max-width: 50%;
-   flex-basis: 90%;
+   flex: 1;
+   min-width: 200px;
+   flex-basis: 50%;
  }
 
- /* CARDS */
+.sm {
+ flex: auto;
+ min-width: 200px;
+ max-width: 26%;
+}
+
+.align-bottom {
+  flex-basis: 100%;
+  align-self: flex-end;
+}
 
 .card {
   text-align: left;
@@ -202,15 +220,6 @@ h1, h2 {
 .card h2 {
   font-weight: 200;
 }
-
-.sm {
-  flex-basis: 26%;
-}
-
-.xsm {
-  flex-basis: 18%;
-}
-
 
 .login {
   text-align: center;
@@ -259,25 +268,6 @@ h1, h2 {
   border-radius: 3px;
 }
 
-.submit-button {
-  display: inline-block;
-  border-style: none;
-  border-radius: 3px;
-  padding: 7px 15px;
-  font-size: .85em;
-  font-weight: 300;
-  color: white;
-  background: #2BA5FF;
-}
-
-.submit-button:hover {
-  background: #81c9ff;
-}
-
-.button-margin {
-  margin-top: 5px;
-}
-
 .register {
   text-align: center;
   width: 80%;
@@ -289,15 +279,33 @@ h1, h2 {
   margin: 10px auto;
   width: 80%;
   padding: 5px;
-  border: 1px solid red;
+  border: 1px solid #da4e4e;
   border-radius: 3px;
+  text-align: center;
 }
 
 .errors-box p {
-  color: red;
+  color: #da4e4e;
   font-size: .85em;
   margin: 3px 0px;
 }
+
+.success-box {
+  margin: 10px auto;
+  width: 80%;
+  padding: 5px;
+  border: 1px solid #1ec122;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.success-box p {
+  color: #1ec122;
+  font-size: .85em;
+  margin: 3px 0px;
+}
+
+/* IMAGES */
 
 .fund-image-container {
   display: flex;
@@ -316,4 +324,50 @@ h1, h2 {
 
 .fund-image {
   width: 100%;
+}
+
+/* BUTTONS */
+
+.button-lg {
+  padding: 7px 15px;
+  font-size: .85em;
+  font-weight: 300;
+  color: white;
+  margin: 10px 5px;
+  background: #2BA5FF;
+}
+
+.button-lg:hover {
+  background: #81c9ff;
+}
+
+.button-sm {
+  padding: 5px 10px;
+  font-weight: 300;
+  color: white;
+  margin: 7px 3px;
+  background: #959595;
+}
+
+.button-sm:hover {
+  background: #bebebe;
+}
+
+.submit-button {
+  display: inline-block;
+  border-style: none;
+  border-radius: 3px;
+  padding: 7px 15px;
+  font-size: .85em;
+  font-weight: 300;
+  color: white;
+  background: #2BA5FF;
+}
+
+.submit-button:hover {
+  background: #81c9ff;
+}
+
+.button-margin {
+  margin-top: 5px;
 }

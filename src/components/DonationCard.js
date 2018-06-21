@@ -10,7 +10,7 @@ export default class DonationCard extends Component {
             src={this.props.donation.fund_picture}
             alt={this.props.donation.fund_title + ' image'} />
         </div>
-        <h2>${this.props.donation.amount}</h2>
+        <h2>${parseFloat(Math.round(this.props.donation.amount * 100) / 100).toFixed(2)}</h2>
         <h4>{this.props.donation.fund_title}</h4>
       </div>
     )

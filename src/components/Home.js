@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import { fetchFunds } from '../actions/index';
 import FundCard from './FundCard'
 import logo from '../images/donatr-logo.png'
+import ReactLoading from 'react-loading';
 
 class Home extends Component {
   state = {
-    filter: ''
+    filter: '',
+    loaded: false
   }
 
   componentDidMount() {
@@ -15,6 +17,9 @@ class Home extends Component {
     .then(json => {
       this.props.dispatch(fetchFunds(json))
       // this.props.getFunds(funds)
+      this.setState({
+        loaded: true
+      })
     })
 
    // this.props.fetchFunds()
@@ -51,7 +56,7 @@ class Home extends Component {
         </div>
 
         <div>
-          <h4 className='funds-header'>Current Crisis Funds</h4>
+          <h3 className='funds-header'>Current Funds</h3>
           <input
             className='search-bar'
             type='text'
@@ -61,9 +66,16 @@ class Home extends Component {
             />
         </div>
 
-        <div className='flex'>
-          { funds.length > 0 ? funds : <p className='white-text'>No funds match your search.</p>}
-        </div>
+        {
+          this.state.loaded ?
+          <div className='flex'>
+            { funds.length > 0 ? funds : <p className='white-text'>No funds match your search.</p>}
+          </div>
+          :
+          <ReactLoading className='loading-icon' type='spin' height='32px' width='32px' />
+        }
+
+
       </div>
     )
   }
