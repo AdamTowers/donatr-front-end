@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default class OrganizationRegister extends Component {
   state = {
@@ -106,6 +107,10 @@ export default class OrganizationRegister extends Component {
             </div>
           </form>
           { this.state.errors.length > 0 ? <div className='errors-box'>{errors}</div> : ''}
+          <div className='sign-up'>
+            <p><NavLink to='/donor-login'>Login</NavLink><br/>
+              Or sign up as a <NavLink to='/donor-register'>Donor</NavLink></p>
+          </div>
         </div>
       </div>
     )
