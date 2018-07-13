@@ -270,6 +270,13 @@ h1, h2 {
   margin: 5px 5px;
 }
 
+.input-flex-tall {
+  flex: auto;
+  max-height: 45px;
+  margin: 5px 5px;
+}
+
+
 .round-corners {
   border-radius: 3px;
 }

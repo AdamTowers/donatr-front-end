@@ -57,9 +57,9 @@ export default class OrganizationRegister extends Component {
         <div className='card register'>
           <form onSubmit={(event) => this.handleSubmit(event)}>
             <h2>Organization Registration</h2>
-            <div class='flex'>
+            <div className='flex'>
               <input
-                className='text-input input-flex'
+                className='text-input input-flex-half'
                 type='text'
                 name='username'
                 value={this.state.username}
@@ -74,8 +74,8 @@ export default class OrganizationRegister extends Component {
                 placeholder='Organization Name'
                 onChange={(event) => this.handleChange(event)}
               />
-              <input
-                className='text-input input-flex-half'
+            <textarea
+                className='text-input input-flex-tall'
                 type='text'
                 name='bio'
                 value={this.state.bio}
