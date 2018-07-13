@@ -60,7 +60,7 @@ class DonorAccount extends Component {
             }
           </div>
           :
-          <ReactLoading className='loading-icon' type='spin' height='32px' width='32px' />
+          <ReactLoading className='loading-icon' type='spin' height={32} width={32} />
         }
 
       </div>

@@ -58,7 +58,7 @@ export default class DonorRegister extends Component {
         <div className='card register'>
           <form onSubmit={(event) => this.handleSubmit(event)}>
             <h2>Donor Registration</h2>
-            <div class='flex'>
+            <div className='flex'>
               <input
                 className='text-input input-flex'
                 type='text'
