@@ -31,12 +31,7 @@ class App extends Component {
             {
               loggedIn ?
               <div className='nav-right'>
-                {
-                  localStorage.getItem('user_class') === "Donor" ?
-                  <NavLink className='nav-link' to='/donor-account'>Account</NavLink>
-                  :
-                  <NavLink className='nav-link' to='/organization-account'>Account</NavLink>
-                }
+                <NavLink className='nav-link' to={`/${localStorage.getItem('user_class').toLowerCase()}-account`}>Account</NavLink>
                 <NavLink className='nav-link outline' to='/' onClick={() => this.handleLogout()}>Logout</NavLink>
               </div>
               :
