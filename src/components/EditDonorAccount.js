@@ -63,7 +63,7 @@ class EditDonorAccount extends Component {
         if (json.errors) {
           this.setState({errors: json.errors})
         } else {
-          this.props.history.push('/account')
+          this.props.history.push('/donor-account')
         }
       })
     }
