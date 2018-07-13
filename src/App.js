@@ -7,6 +7,7 @@ import Home from './components/Home';
 import DonorLogin from  './components/DonorLogin';
 import DonorRegister from  './components/DonorRegister';
 import DonorAccount from './components/DonorAccount';
+import OrganizationLogin from  './components/OrganizationLogin';
 import Fund from './components/Fund';
 import Organization from './components/Organization';
 import EditDonorAccount from './components/EditDonorAccount';
@@ -41,13 +42,14 @@ class App extends Component {
           <Route exact path='/' render={(props) => <Home {...props} />} />
           <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
           <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
-          <Route path='/donor-login' render={(props) =>
+
+        <Route path='/donor-login' render={(props) =>
               loggedIn ?
                 <Redirect to='/account'/>
                 :
                 <DonorLogin {...props} />}
                 />
-              <Route path='/donor-register' render={(props) =>
+          <Route path='/donor-register' render={(props) =>
               loggedIn ?
                 <Redirect to='/account'/>
                 :
@@ -64,6 +66,12 @@ class App extends Component {
                 <EditDonorAccount {...props} />
                 :
                 <Redirect to='/donor-login'/>}
+                />
+          <Route exact path='/organization-login' render={(props) =>
+              loggedIn ?
+                <Redirect to='/account'/>
+                :
+                <OrganizationLogin {...props}/>}
                 />
         </div>
       </Router>

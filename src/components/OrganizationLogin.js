@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default class DonorLogin extends Component {
+export default class OrganizationLogin extends Component {
   state = {
     username: '',
     password: '',
@@ -17,7 +17,7 @@ export default class DonorLogin extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    fetch('http://localhost:3000/api/v1/donor_sessions', {
+    fetch('http://localhost:3000/api/v1/organization_sessions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export default class DonorLogin extends Component {
       <div className='flex center'>
         <div className='card login'>
           <form onSubmit={(event) => this.handleSubmit(event)}>
-            <h2>Donor Login</h2>
+            <h2>Organization Login</h2>
             <input
               className='text-input'
               type='text'
@@ -72,7 +72,7 @@ export default class DonorLogin extends Component {
           { this.state.error ? <div className='errors-box'><p>{this.state.error}</p></div> : ''}
 
           <div className='login-link'>
-            <p><NavLink to='/organization-login'>Organization Login</NavLink></p>
+            <p><NavLink to='/donor-login'>Donor Login</NavLink></p>
           </div>
 
           <div className='sign-up'>

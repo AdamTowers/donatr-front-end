@@ -72,7 +72,7 @@ class Home extends Component {
             { funds.length > 0 ? funds : <p className='white-text'>No funds match your search.</p>}
           </div>
           :
-          <ReactLoading className='loading-icon' type='spin' height='32px' width='32px' />
+          <ReactLoading className='loading-icon' type='spin' height={32} width={32} />
         }
 
 
