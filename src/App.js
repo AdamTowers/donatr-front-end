@@ -28,9 +28,15 @@ class App extends Component {
             <div className='nav-left'>
               <NavLink className='nav-link' to='/'>Home</NavLink>
             </div>
-            { loggedIn ?
+            {
+              loggedIn ?
               <div className='nav-right'>
-                <NavLink className='nav-link' to='/account'>Account</NavLink>
+                {
+                  localStorage.getItem('user_class') === "Donor" ?
+                  <NavLink className='nav-link' to='/donor-account'>Account</NavLink>
+                  :
+                  <NavLink className='nav-link' to='/organization-account'>Account</NavLink>
+                }
                 <NavLink className='nav-link outline' to='/' onClick={() => this.handleLogout()}>Logout</NavLink>
               </div>
               :
@@ -56,13 +62,13 @@ class App extends Component {
                 :
                 <DonorRegister {...props} />}
                 />
-          <Route exact path='/account' render={(props) =>
+              <Route exact path='/donor-account' render={(props) =>
               loggedIn ?
                 <DonorAccount {...props} />
                 :
                 <Redirect to='/donor-login'/>}
                 />
-          <Route exact path='/account/edit' render={(props) =>
+              <Route exact path='/donor-account/edit' render={(props) =>
               loggedIn ?
                 <EditDonorAccount {...props} />
                 :

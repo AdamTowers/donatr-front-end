@@ -43,7 +43,7 @@ class DonorAccount extends Component {
           <div>
             <h1 className='name white-text'>{this.props.user.first_name} {this.props.user.last_name}</h1>
             <div className='account-buttons-container'>
-              <button className='button-lg' onClick={() => this.props.history.push('/account/edit')}>Edit Account</button>
+              <button className='button-lg' onClick={() => this.props.history.push('/donor-account/edit')}>Edit Account</button>
             </div>
             {
               this.props.user.donations.length > 0 ?
