@@ -8,6 +8,7 @@ import DonorLogin from  './components/DonorLogin';
 import DonorRegister from  './components/DonorRegister';
 import DonorAccount from './components/DonorAccount';
 import OrganizationLogin from  './components/OrganizationLogin';
+import OrganizationRegister from  './components/OrganizationRegister';
 import Fund from './components/Fund';
 import Organization from './components/Organization';
 import EditDonorAccount from './components/EditDonorAccount';
@@ -72,6 +73,12 @@ class App extends Component {
                 <Redirect to='/account'/>
                 :
                 <OrganizationLogin {...props}/>}
+                />
+          <Route exact path='/organization-register' render={(props) =>
+              loggedIn ?
+                <Redirect to='/account'/>
+                :
+                <OrganizationRegister {...props}/>}
                 />
         </div>
       </Router>
