@@ -13,7 +13,9 @@ const initialState = {
     funds: []
   },
   selectedFund: {},
-  selectedOrg: {}
+  selectedOrg: {
+    funds: []
+  }
 }
 
 export default function reducer(state = initialState, action) {
