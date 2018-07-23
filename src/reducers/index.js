@@ -9,12 +9,11 @@ const initialState = {
   organizations: [],
   funds: [],
   user: {
-    donations: []
+    donations: [],
+    funds: []
   },
   selectedFund: {},
-  selectedOrg: {
-    funds: []
-  }
+  selectedOrg: {}
 }
 
 export default function reducer(state = initialState, action) {

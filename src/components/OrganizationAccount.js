@@ -48,7 +48,7 @@ class OrganizationAccount extends Component {
             {
               this.props.user.funds.length > 0 ?
               <div>
-                <h3 className='white-text'>Recent Donations</h3>
+                <h3 className='white-text'>Recent Funds</h3>
                 <div className='flex'>
                   {funds}
                 </div>

@@ -7,11 +7,12 @@ import Home from './components/Home';
 import DonorLogin from  './components/DonorLogin';
 import DonorRegister from  './components/DonorRegister';
 import DonorAccount from './components/DonorAccount';
+import EditDonorAccount from './components/EditDonorAccount';
 import OrganizationLogin from  './components/OrganizationLogin';
 import OrganizationRegister from  './components/OrganizationRegister';
+import OrganizationAccount from  './components/OrganizationAccount';
 import Fund from './components/Fund';
 import Organization from './components/Organization';
-import EditDonorAccount from './components/EditDonorAccount';
 
 class App extends Component {
   handleLogout() {
@@ -45,25 +46,25 @@ class App extends Component {
           <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
           <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
 
-        <Route path='/donor-login' render={(props) =>
+          <Route path='/donor-login' render={(props) =>
               loggedIn ?
-                <Redirect to='/account'/>
+                <Redirect to='/donor-account'/>
                 :
                 <DonorLogin {...props} />}
                 />
           <Route path='/donor-register' render={(props) =>
               loggedIn ?
-                <Redirect to='/account'/>
+                <Redirect to='/donor-account'/>
                 :
                 <DonorRegister {...props} />}
                 />
-              <Route exact path='/donor-account' render={(props) =>
+          <Route exact path='/donor-account' render={(props) =>
               loggedIn ?
                 <DonorAccount {...props} />
                 :
                 <Redirect to='/donor-login'/>}
                 />
-              <Route exact path='/donor-account/edit' render={(props) =>
+          <Route exact path='/donor-account/edit' render={(props) =>
               loggedIn ?
                 <EditDonorAccount {...props} />
                 :
@@ -71,15 +72,21 @@ class App extends Component {
                 />
           <Route exact path='/organization-login' render={(props) =>
               loggedIn ?
-                <Redirect to='/account'/>
+                <Redirect to='/organization-account'/>
                 :
                 <OrganizationLogin {...props}/>}
                 />
           <Route exact path='/organization-register' render={(props) =>
               loggedIn ?
-                <Redirect to='/account'/>
+                <Redirect to='/organization-account'/>
                 :
                 <OrganizationRegister {...props}/>}
+                />
+          <Route exact path='/organization-account' render={(props) =>
+              loggedIn ?
+                <OrganizationAccount {...props}/>
+                :
+                <Redirect to='/organization-account'/>}
                 />
         </div>
       </Router>
