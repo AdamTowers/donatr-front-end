@@ -21,7 +21,9 @@ class App extends Component {
   }
 
   render() {
-    const loggedIn = !!localStorage.getItem('token')
+    const loggedIn = !!localStorage.getItem('token');
+    const isDonor = localStorage.getItem('user_class') === 'Donor';
+    const isOrganization = localStorage.getItem('user_class') === 'Organization';
 
     return (
       <Router>
@@ -48,49 +50,49 @@ class App extends Component {
           <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
 
           <Route path='/donor-login' render={(props) =>
-              loggedIn ?
+              loggedIn && isDonor ?
                 <Redirect to='/donor-account'/>
                 :
                 <DonorLogin {...props} />}
                 />
           <Route path='/donor-register' render={(props) =>
-              loggedIn ?
+              loggedIn && isDonor ?
                 <Redirect to='/donor-account'/>
                 :
                 <DonorRegister {...props} />}
                 />
           <Route exact path='/donor-account' render={(props) =>
-              loggedIn ?
+              loggedIn && isDonor ?
                 <DonorAccount {...props} />
                 :
                 <Redirect to='/donor-login'/>}
                 />
           <Route exact path='/donor-account/edit' render={(props) =>
-              loggedIn ?
+              loggedIn && isDonor ?
                 <EditDonorAccount {...props} />
                 :
                 <Redirect to='/donor-login'/>}
                 />
           <Route exact path='/organization-login' render={(props) =>
-              loggedIn ?
+              loggedIn && isOrganization ?
                 <Redirect to='/organization-account'/>
                 :
                 <OrganizationLogin {...props}/>}
                 />
           <Route exact path='/organization-register' render={(props) =>
-              loggedIn ?
+              loggedIn && isOrganization ?
                 <Redirect to='/organization-account'/>
                 :
                 <OrganizationRegister {...props}/>}
                 />
           <Route exact path='/organization-account' render={(props) =>
-              loggedIn ?
+              loggedIn && isOrganization ?
                 <OrganizationAccount {...props}/>
                 :
                 <Redirect to='/organization-account'/>}
                 />
           <Route exact path='/organization-account/edit' render={(props) =>
-              loggedIn ?
+              loggedIn && isOrganization ?
                 <EditOrganizationAccount {...props} />
                 :
                 <Redirect to='/organization-login'/>}
