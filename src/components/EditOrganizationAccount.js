@@ -23,10 +23,10 @@ class EditOrganizationAccount extends Component {
        .then(res => res.json())
        .then(json => {
          this.setState({
-           username: this.state.username,
-           name: this.state.name,
-           bio: this.state.bio,
-           email: this.state.email
+           username: json.username,
+           name: json.name,
+           bio: json.bio,
+           email: json.email
          })
          this.props.dispatch(fetchUser(json))
          }
