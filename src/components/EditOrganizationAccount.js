@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/index'
 
-class EditDonorAccount extends Component {
+class EditOrganizationAccount extends Component {
   state = {
     username: '',
-    first_name: '',
-    last_name: '',
+    name: '',
+    bio: '',
     email: '',
     errors: []
   }
 
   componentDidMount() {
     if(localStorage.getItem('token')) {
-      fetch(`http://localhost:3000/api/v1/donors/${localStorage.getItem('user_id')}`, {
+      fetch(`http://localhost:3000/api/v1/organizations/${localStorage.getItem('user_id')}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('token')
@@ -23,8 +23,8 @@ class EditDonorAccount extends Component {
        .then(json => {
          this.setState({
            username: json.username,
-           first_name: json.first_name,
-           last_name: json.last_name,
+           name: json.name,
+           bio: json.bio,
            email: json.email
          })
          this.props.dispatch(fetchUser(json))
@@ -44,7 +44,7 @@ class EditDonorAccount extends Component {
   handleSubmit(event) {
     event.preventDefault()
     if (localStorage.getItem('token')) {
-      fetch(`http://localhost:3000/api/v1/donors/${parseInt(localStorage.getItem('user_id'), 0)}`, {
+      fetch(`http://localhost:3000/api/v1/organizations/${parseInt(localStorage.getItem('user_id'), 0)}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -53,9 +53,9 @@ class EditDonorAccount extends Component {
         },
         body: JSON.stringify({
           username: this.state.username,
-          first_name: this.state.first_name,
-          last_name: this.state.last_name,
-          email: this.state.email,
+          name: this.state.name,
+          bio: this.state.bio,
+          email: this.state.email
         })
       })
       .then(res => res.json())
@@ -63,7 +63,7 @@ class EditDonorAccount extends Component {
         if (json.errors) {
           this.setState({errors: json.errors})
         } else {
-          this.props.history.push('/donor-account')
+          this.props.history.push('/organization-account')
         }
       })
     }
@@ -80,7 +80,7 @@ class EditDonorAccount extends Component {
           <h2>Edit Account</h2>
           <div className='flex'>
             <input
-              className='text-input input-flex'
+              className='text-input input-flex-half'
               type='text'
               name='username'
               value={this.state.username}
@@ -90,17 +90,17 @@ class EditDonorAccount extends Component {
             <input
               className='text-input input-flex-half'
               type='text'
-              name='first_name'
-              value={this.state.first_name}
-              placeholder='First name'
+              name='name'
+              value={this.state.name}
+              placeholder='Organization Name'
               onChange={(event) => this.handleChange(event)}
             />
-            <input
-              className='text-input input-flex-half'
+            <textarea
+              className='text-input input-flex-tall'
               type='text'
-              name='last_name'
-              value={this.state.last_name}
-              placeholder='Last name'
+              name='bio'
+              value={this.state.bio}
+              placeholder='Bio'
               onChange={(event) => this.handleChange(event)}
             />
             <input
@@ -111,11 +111,11 @@ class EditDonorAccount extends Component {
               placeholder='Email'
               onChange={(event) => this.handleChange(event)}
             />
-          <input
-            className='submit-button button-margin'
-            type='submit'
-            value='Save'
-            />
+            <input
+              className='submit-button button-margin'
+              type='submit'
+              value='Save'
+              />
           </div>
           {
             this.state.errors.length > 0 ?
@@ -140,4 +140,4 @@ function mapDispatchToProps(dispatch) {
     dispatch
    }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(EditDonorAccount)
+export default connect(mapStateToProps, mapDispatchToProps)(EditOrganizationAccount)

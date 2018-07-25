@@ -9,7 +9,8 @@ const initialState = {
   organizations: [],
   funds: [],
   user: {
-    donations: []
+    donations: [],
+    funds: []
   },
   selectedFund: {},
   selectedOrg: {

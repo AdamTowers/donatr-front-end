@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchUser } from '../actions/index'
-import DonationCard from './DonationCard'
+import FundCard from './FundCard'
 import ReactLoading from 'react-loading';
 
-class DonorAccount extends Component {
+class OrganizationAccount extends Component {
   state = {
     loaded: false
   }
 
   componentDidMount() {
     if(localStorage.getItem('token')) {
-      fetch(`http://localhost:3000/api/v1/donors/${localStorage.getItem('user_id')}`, {
+      fetch(`http://localhost:3000/api/v1/organizations/${localStorage.getItem('user_id')}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('token')
@@ -32,30 +32,30 @@ class DonorAccount extends Component {
   }
 
   render() {
-    const donations =
-     this.props.user.donations.map(donation =>
-     <DonationCard key={donation.id} donation={donation} history={this.props.history} />).slice(0,9)
+    const funds =
+     this.props.user.funds.map(fund =>
+     <FundCard key={fund.id} fund={fund} history={this.props.history} />).slice(0,9)
 
     return (
       <div className='container'>
         {
           this.state.loaded ?
           <div>
-            <h1 className='name white-text'>{this.props.user.first_name} {this.props.user.last_name}</h1>
+            <h1 className='name white-text'>{this.props.user.name}</h1>
             <div className='account-buttons-container'>
-              <button className='button-lg' onClick={() => this.props.history.push('/donor-account/edit')}>Edit Account</button>
+              <button className='button-lg' onClick={() => this.props.history.push('/organization-account/edit')}>Edit Account</button>
             </div>
             {
-              this.props.user.donations.length > 0 ?
+              this.props.user.funds.length > 0 ?
               <div>
-                <h3 className='white-text'>Recent Donations</h3>
+                <h3 className='white-text'>Recent Funds</h3>
                 <div className='flex'>
-                  {donations}
+                  {funds}
                 </div>
               </div>
               :
               <div>
-                <p className='white-text'>You have no donations yet.</p>
+                <p className='white-text'>You have no funds yet.</p>
               </div>
             }
           </div>
@@ -79,4 +79,4 @@ function mapDispatchToProps(dispatch) {
     dispatch
    }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(DonorAccount)
+export default connect(mapStateToProps, mapDispatchToProps)(OrganizationAccount)

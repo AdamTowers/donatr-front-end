@@ -7,9 +7,13 @@ import Home from './components/Home';
 import DonorLogin from  './components/DonorLogin';
 import DonorRegister from  './components/DonorRegister';
 import DonorAccount from './components/DonorAccount';
+import EditDonorAccount from './components/EditDonorAccount';
+import OrganizationLogin from  './components/OrganizationLogin';
+import OrganizationRegister from  './components/OrganizationRegister';
+import OrganizationAccount from  './components/OrganizationAccount';
+import EditOrganizationAccount from './components/EditOrganizationAccount';
 import Fund from './components/Fund';
 import Organization from './components/Organization';
-import EditDonorAccount from './components/EditDonorAccount';
 
 class App extends Component {
   handleLogout() {
@@ -17,7 +21,9 @@ class App extends Component {
   }
 
   render() {
-    const loggedIn = !!localStorage.getItem('token')
+    const loggedIn = !!localStorage.getItem('token');
+    const isDonor = localStorage.getItem('user_class') === 'Donor';
+    const isOrganization = localStorage.getItem('user_class') === 'Organization';
 
     return (
       <Router>
@@ -26,9 +32,10 @@ class App extends Component {
             <div className='nav-left'>
               <NavLink className='nav-link' to='/'>Home</NavLink>
             </div>
-            { loggedIn ?
+            {
+              loggedIn ?
               <div className='nav-right'>
-                <NavLink className='nav-link' to='/account'>Account</NavLink>
+                <NavLink className='nav-link' to={`/${localStorage.getItem('user_class').toLowerCase()}-account`}>Account</NavLink>
                 <NavLink className='nav-link outline' to='/' onClick={() => this.handleLogout()}>Logout</NavLink>
               </div>
               :
@@ -41,29 +48,54 @@ class App extends Component {
           <Route exact path='/' render={(props) => <Home {...props} />} />
           <Route exact path='/funds/:id' render={(props) => <Fund {...props} />} />
           <Route exact path='/organizations/:id' render={(props) => <Organization {...props} />} />
+
           <Route path='/donor-login' render={(props) =>
-              loggedIn ?
-                <Redirect to='/account'/>
+              loggedIn && isDonor ?
+                <Redirect to='/donor-account'/>
                 :
                 <DonorLogin {...props} />}
                 />
-              <Route path='/donor-register' render={(props) =>
-              loggedIn ?
-                <Redirect to='/account'/>
+          <Route path='/donor-register' render={(props) =>
+              loggedIn && isDonor ?
+                <Redirect to='/donor-account'/>
                 :
                 <DonorRegister {...props} />}
                 />
-          <Route exact path='/account' render={(props) =>
-              loggedIn ?
+          <Route exact path='/donor-account' render={(props) =>
+              loggedIn && isDonor ?
                 <DonorAccount {...props} />
                 :
                 <Redirect to='/donor-login'/>}
                 />
-          <Route exact path='/account/edit' render={(props) =>
-              loggedIn ?
+          <Route exact path='/donor-account/edit' render={(props) =>
+              loggedIn && isDonor ?
                 <EditDonorAccount {...props} />
                 :
                 <Redirect to='/donor-login'/>}
+                />
+          <Route exact path='/organization-login' render={(props) =>
+              loggedIn && isOrganization ?
+                <Redirect to='/organization-account'/>
+                :
+                <OrganizationLogin {...props}/>}
+                />
+          <Route exact path='/organization-register' render={(props) =>
+              loggedIn && isOrganization ?
+                <Redirect to='/organization-account'/>
+                :
+                <OrganizationRegister {...props}/>}
+                />
+          <Route exact path='/organization-account' render={(props) =>
+              loggedIn && isOrganization ?
+                <OrganizationAccount {...props}/>
+                :
+                <Redirect to='/organization-account'/>}
+                />
+          <Route exact path='/organization-account/edit' render={(props) =>
+              loggedIn && isOrganization ?
+                <EditOrganizationAccount {...props} />
+                :
+                <Redirect to='/organization-login'/>}
                 />
         </div>
       </Router>

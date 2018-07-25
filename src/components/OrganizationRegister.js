@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default class DonorRegister extends Component {
+export default class OrganizationRegister extends Component {
   state = {
     username: '',
-    first_name: '',
-    last_name: '',
+    name: '',
+    bio: '',
     email: '',
     password: '',
     errors: []
@@ -19,7 +19,7 @@ export default class DonorRegister extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    fetch('http://localhost:3000/api/v1/donors', {
+    fetch('http://localhost:3000/api/v1/organizations', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -27,8 +27,8 @@ export default class DonorRegister extends Component {
       },
       body: JSON.stringify({
         username: this.state.username,
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
+        name: this.state.name,
+        bio: this.state.bio,
         email: this.state.email,
         password: this.state.password
       })
@@ -57,10 +57,10 @@ export default class DonorRegister extends Component {
       <div className='flex center'>
         <div className='card register'>
           <form onSubmit={(event) => this.handleSubmit(event)}>
-            <h2>Donor Registration</h2>
+            <h2>Organization Registration</h2>
             <div className='flex'>
               <input
-                className='text-input input-flex'
+                className='text-input input-flex-half'
                 type='text'
                 name='username'
                 value={this.state.username}
@@ -70,17 +70,17 @@ export default class DonorRegister extends Component {
               <input
                 className='text-input input-flex-half'
                 type='text'
-                name='first_name'
+                name='name'
                 value={this.state.first_name}
-                placeholder='First name'
+                placeholder='Organization Name'
                 onChange={(event) => this.handleChange(event)}
               />
-              <input
-                className='text-input input-flex-half'
+            <textarea
+                className='text-input input-flex-tall'
                 type='text'
-                name='last_name'
-                value={this.state.last_name}
-                placeholder='Last name'
+                name='bio'
+                value={this.state.bio}
+                placeholder='Bio'
                 onChange={(event) => this.handleChange(event)}
               />
               <input
@@ -109,7 +109,7 @@ export default class DonorRegister extends Component {
           { this.state.errors.length > 0 ? <div className='errors-box'>{errors}</div> : ''}
           <div className='sign-up'>
             <p><NavLink to='/donor-login'>Login</NavLink><br/>
-              Or sign up as a <NavLink to='/organization-register'>Organization</NavLink></p>
+              Or sign up as a <NavLink to='/donor-register'>Donor</NavLink></p>
           </div>
         </div>
       </div>
