@@ -8,7 +8,6 @@ class EditOrganizationAccount extends Component {
     name: '',
     bio: '',
     email: '',
-    password: '',
     errors: []
   }
 
@@ -79,53 +78,45 @@ class EditOrganizationAccount extends Component {
       <div className='flex center'>
         <form className='card register' onSubmit={(event) => this.handleSubmit(event)}>
           <h2>Edit Account</h2>
-            <div className='flex'>
-              <input
-                className='text-input input-flex-half'
-                type='text'
-                name='username'
-                value={this.state.username}
-                placeholder='Username'
-                onChange={(event) => this.handleChange(event)}
-              />
-              <input
-                className='text-input input-flex-half'
-                type='text'
-                name='name'
-                value={this.state.first_name}
-                placeholder='Organization Name'
-                onChange={(event) => this.handleChange(event)}
-              />
+          <div className='flex'>
+            <input
+              className='text-input input-flex-half'
+              type='text'
+              name='username'
+              value={this.state.username}
+              placeholder='Username'
+              onChange={(event) => this.handleChange(event)}
+            />
+            <input
+              className='text-input input-flex-half'
+              type='text'
+              name='name'
+              value={this.state.name}
+              placeholder='Organization Name'
+              onChange={(event) => this.handleChange(event)}
+            />
             <textarea
-                className='text-input input-flex-tall'
-                type='text'
-                name='bio'
-                value={this.state.bio}
-                placeholder='Bio'
-                onChange={(event) => this.handleChange(event)}
+              className='text-input input-flex-tall'
+              type='text'
+              name='bio'
+              value={this.state.bio}
+              placeholder='Bio'
+              onChange={(event) => this.handleChange(event)}
+            />
+            <input
+              className='text-input input-flex'
+              type='text'
+              name='email'
+              value={this.state.email}
+              placeholder='Email'
+              onChange={(event) => this.handleChange(event)}
+            />
+            <input
+              className='submit-button button-margin'
+              type='submit'
+              value='Save'
               />
-              <input
-                className='text-input input-flex'
-                type='text'
-                name='email'
-                value={this.state.email}
-                placeholder='Email'
-                onChange={(event) => this.handleChange(event)}
-              />
-              <input
-                className='text-input input-flex'
-                type='password'
-                name='password'
-                value={this.state.password}
-                placeholder='Password'
-                onChange={(event) => this.handleChange(event)}
-              />
-              <input
-                className='submit-button button-margin'
-                type='submit'
-                value='Save'
-                />
-            </div>
+          </div>
           {
             this.state.errors.length > 0 ?
             <div class='errors-box'>{errors}</div>
