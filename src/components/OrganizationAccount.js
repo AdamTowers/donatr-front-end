@@ -44,6 +44,7 @@ class OrganizationAccount extends Component {
             <h1 className='name white-text'>{this.props.user.name}</h1>
             <div className='account-buttons-container'>
               <button className='button-lg' onClick={() => this.props.history.push('/organization-account/edit')}>Edit Account</button>
+              <button className='button-lg' onClick={() => this.props.history.push('/create-fund')}>Create Fund</button>
             </div>
             {
               this.props.user.funds.length > 0 ?
