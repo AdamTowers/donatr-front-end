@@ -122,7 +122,7 @@ class Fund extends Component {
                 </div>
 
                 {
-                  localStorage.getItem('token') ?
+                  localStorage.getItem('token') && localStorage.getItem('user_class') === "Donor" ?
                   <form onSubmit={(event) => this.handleSubmit(event)}>
                     <div className='flex'>
                       <input
@@ -141,7 +141,7 @@ class Fund extends Component {
                   </form>
                   :
                   <div>
-                    <p><button className='button-sm' onClick={() => this.props.history.push('/donor-login')}>Login</button> to make a donation</p>
+                    <p><button className='button-sm' onClick={() => this.props.history.push('/donor-login')}>Login</button> as a donor to make a donation</p>
                   </div>
                 }
 
