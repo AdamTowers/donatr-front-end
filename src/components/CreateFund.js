@@ -22,7 +22,8 @@ class CreateFund extends Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Authorization': localStorage.getItem('token')
       },
       body: JSON.stringify({
         organization_id: localStorage.getItem('user_id'),
@@ -37,9 +38,7 @@ class CreateFund extends Component {
       if (json.errors) {
         this.setState({errors: json.errors})
       } else {
-        debugger
-
-        this.props.history.push('/')
+        this.props.history.push(`/funds/${json.id}`)
       }
     })
   }
@@ -72,10 +71,10 @@ class CreateFund extends Component {
             />
             <input
               className='text-input input-flex-half'
-              type='text'
+              type='number'
               name='goal'
               value={this.state.goal}
-              placeholder='Organization Name'
+              placeholder='$ Goal'
               onChange={(event) => this.handleChange(event)}
             />
             <input
@@ -94,7 +93,7 @@ class CreateFund extends Component {
           </div>
           {
             this.state.errors.length > 0 ?
-            <div class='errors-box'>{errors}</div>
+            <div className='errors-box'>{errors}</div>
             :
             ''
           }
