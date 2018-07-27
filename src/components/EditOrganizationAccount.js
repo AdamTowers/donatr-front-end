@@ -13,9 +13,10 @@ class EditOrganizationAccount extends Component {
 
   componentDidMount() {
     if(localStorage.getItem('token')) {
-      fetch(`http://localhost:3000/api/v1/organizations/${localStorage.getItem('user_id')}`, {
+      fetch(`http://localhost:3000/api/v1/organizations/${localStorage.getItem('user_id')}/edit`, {
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
           'Authorization': localStorage.getItem('token')
         }
       })
