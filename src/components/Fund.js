@@ -72,7 +72,19 @@ class Fund extends Component {
   }
 
   endFund() {
-    
+    fetch(`http://localhost:3000/api/v1/funds/${this.props.match.params.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': localStorage.getItem('token'),
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        fund_id: parseInt(this.props.match.params.id, 0),
+        organization_id: localStorage.getItem('user_id'),
+        active: false
+      })
+    })
   }
 
   render() {
