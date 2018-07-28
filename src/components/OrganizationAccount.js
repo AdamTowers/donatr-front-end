@@ -32,9 +32,13 @@ class OrganizationAccount extends Component {
   }
 
   render() {
-    const funds =
-     this.props.user.funds.map(fund =>
-     <FundCard key={fund.id} fund={fund} history={this.props.history} />).slice(0,9)
+    let funds = []
+
+    if (this.props.user.funds) {
+      funds = this.props.user.funds.map(fund =>
+      <FundCard key={fund.id} fund={fund} history={this.props.history} />).slice(0,9)
+    }
+
 
     return (
       <div className='container'>
@@ -47,7 +51,7 @@ class OrganizationAccount extends Component {
               <button className='button-lg' onClick={() => this.props.history.push('/create-fund')}>Create Fund</button>
             </div>
             {
-              this.props.user.funds.length > 0 ?
+              funds.length > 0 ?
               <div>
                 <h3 className='white-text'>Recent Funds</h3>
                 <div className='flex'>
