@@ -71,6 +71,10 @@ class Fund extends Component {
     this.props.history.push(`/organizations/${this.props.selectedFund.organization_id}`)
   }
 
+  endFund() {
+    
+  }
+
   render() {
     const selectedFund = this.props.selectedFund
     const percent = selectedFund.percent_raised > 100 ? 100 : selectedFund.percent_raised
@@ -101,6 +105,13 @@ class Fund extends Component {
                 <h1>{selectedFund.title}</h1>
                 <h3 onClick={(event) => this.handleOrgClick(event)}>{selectedFund.organization_name}</h3>
                 <p>{selectedFund.description}</p>
+                {
+                  localStorage.getItem('user_class') === 'Organization' && selectedFund.organization_id === parseInt(localStorage.getItem('user_id'), 0) ?
+                  <button className='button-lg' onClick={() => this.endFund()}>End fund</button>
+                  :
+                  ''
+                }
+
               </div>
 
               <div className='flex-half'>
