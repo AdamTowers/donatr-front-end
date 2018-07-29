@@ -82,9 +82,10 @@ class Fund extends Component {
       body: JSON.stringify({
         fund_id: parseInt(this.props.match.params.id, 0),
         organization_id: localStorage.getItem('user_id'),
-        active: false
+        active: !this.props.selectedFund.active
       })
     })
+    .then(res => res.json())
     .then(this.props.history.push('/'))
   }
 
@@ -120,7 +121,10 @@ class Fund extends Component {
                 <p>{selectedFund.description}</p>
                 {
                   localStorage.getItem('user_class') === 'Organization' && selectedFund.organization_id === parseInt(localStorage.getItem('user_id'), 0) ?
-                  <button className='button-lg' onClick={() => this.endFund()}>End fund</button>
+                    selectedFund.active ?
+                    <button className='button-lg' onClick={() => this.endFund()}>End Fund</button>
+                    :
+                    <button className='button-lg' onClick={() => this.endFund()}>Reactivate Fund</button>
                   :
                   ''
                 }
