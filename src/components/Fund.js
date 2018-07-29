@@ -85,6 +85,7 @@ class Fund extends Component {
         active: false
       })
     })
+    .then(this.props.history.push('/'))
   }
 
   render() {
