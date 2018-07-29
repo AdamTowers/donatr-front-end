@@ -39,10 +39,13 @@ class Home extends Component {
   }
 
   render() {
-    let funds = this.props.funds.map(fund => <FundCard key={fund.id} fund={fund} history={this.props.history} />)
+
+    let activeFunds = this.props.funds.filter(fund => fund.active)
+
+    let funds = activeFunds.map(fund => <FundCard key={fund.id} fund={fund} history={this.props.history} />).reverse()
 
     if (this.state.filter) {
-      const filteredFunds = this.props.funds.filter(fund => fund.title.toLowerCase().includes(this.state.filter.toLowerCase()))
+      const filteredFunds = activeFunds.filter(fund => fund.title.toLowerCase().includes(this.state.filter.toLowerCase()))
       funds = filteredFunds.map(fund =>
         <FundCard key={fund.id} fund={fund} history={this.props.history} />
       )

@@ -32,11 +32,18 @@ class OrganizationAccount extends Component {
   }
 
   render() {
-    let funds = []
+    let activeFunds = []
+    let pastFunds = []
 
     if (this.props.user.funds) {
-      funds = this.props.user.funds.map(fund =>
-      <FundCard key={fund.id} fund={fund} history={this.props.history} />).slice(0,9)
+      let active = this.props.user.funds.filter(fund => fund.active)
+      let past = this.props.user.funds.filter(fund => !fund.active)
+
+      activeFunds = active.map(fund =>
+      <FundCard key={fund.id} fund={fund} history={this.props.history} />).slice(0,9).reverse()
+
+      pastFunds = past.map(fund =>
+      <FundCard key={fund.id} fund={fund} history={this.props.history} />).slice(0,9).reverse()
     }
 
 
@@ -51,17 +58,28 @@ class OrganizationAccount extends Component {
               <button className='button-lg' onClick={() => this.props.history.push('/create-fund')}>Create Fund</button>
             </div>
             {
-              funds.length > 0 ?
+              activeFunds.length > 0 ?
               <div>
-                <h3 className='white-text'>Recent Funds</h3>
+                <h3 className='white-text'>Active Funds</h3>
                 <div className='flex'>
-                  {funds}
+                  {activeFunds}
                 </div>
               </div>
               :
               <div>
-                <p className='white-text'>You have no funds yet.</p>
+                <p className='white-text'>You have no active funds.</p>
               </div>
+            }
+            {
+              pastFunds.length > 0 ?
+              <div>
+                <h3 className='white-text'>Past Funds</h3>
+                <div className='flex'>
+                  {pastFunds}
+                </div>
+              </div>
+              :
+              ''
             }
           </div>
           :
