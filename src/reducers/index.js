@@ -12,7 +12,9 @@ const initialState = {
     donations: [],
     funds: []
   },
-  selectedFund: {},
+  selectedFund: {
+    id: ''
+  },
   selectedOrg: {
     funds: []
   }

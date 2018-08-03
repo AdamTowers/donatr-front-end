@@ -71,6 +71,24 @@ class Fund extends Component {
     this.props.history.push(`/organizations/${this.props.selectedFund.organization_id}`)
   }
 
+  endFund() {
+    fetch(`http://localhost:3000/api/v1/funds/${this.props.match.params.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': localStorage.getItem('token'),
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        fund_id: parseInt(this.props.match.params.id, 0),
+        organization_id: localStorage.getItem('user_id'),
+        active: !this.props.selectedFund.active
+      })
+    })
+    .then(res => res.json())
+    .then(this.props.history.push('/'))
+  }
+
   render() {
     const selectedFund = this.props.selectedFund
     const percent = selectedFund.percent_raised > 100 ? 100 : selectedFund.percent_raised
@@ -101,6 +119,16 @@ class Fund extends Component {
                 <h1>{selectedFund.title}</h1>
                 <h3 onClick={(event) => this.handleOrgClick(event)}>{selectedFund.organization_name}</h3>
                 <p>{selectedFund.description}</p>
+                {
+                  localStorage.getItem('user_class') === 'Organization' && selectedFund.organization_id === parseInt(localStorage.getItem('user_id'), 0) ?
+                    selectedFund.active ?
+                    <button className='button-lg' onClick={() => this.endFund()}>End Fund</button>
+                    :
+                    <button className='button-lg' onClick={() => this.endFund()}>Reactivate Fund</button>
+                  :
+                  ''
+                }
+
               </div>
 
               <div className='flex-half'>
@@ -122,7 +150,7 @@ class Fund extends Component {
                 </div>
 
                 {
-                  localStorage.getItem('token') ?
+                  localStorage.getItem('token') && localStorage.getItem('user_class') === "Donor" ?
                   <form onSubmit={(event) => this.handleSubmit(event)}>
                     <div className='flex'>
                       <input
@@ -141,7 +169,7 @@ class Fund extends Component {
                   </form>
                   :
                   <div>
-                    <p><button className='button-sm' onClick={() => this.props.history.push('/donor-login')}>Login</button> to make a donation</p>
+                    <p><button className='button-sm' onClick={() => this.props.history.push('/donor-login')}>Login</button> as a donor to make a donation</p>
                   </div>
                 }
 
