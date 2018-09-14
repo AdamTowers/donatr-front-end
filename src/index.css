@@ -171,6 +171,10 @@ h1, h2 {
    grid-template-columns: 1fr 1fr 1fr;
  }
 
+ .grid-item {
+   margin: 5px;
+ }
+
  .flex-left {
    display: flex;
    flex-wrap: wrap;
