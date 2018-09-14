@@ -71,7 +71,7 @@ class Home extends Component {
 
         {
           this.state.loaded ?
-          <div className='flex'>
+          <div className='grid'>
             { funds.length > 0 ? funds : <p className='white-text'>No funds match your search.</p>}
           </div>
           :
