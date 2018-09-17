@@ -1,4 +1,6 @@
-# Donatr
+# Donatr (Front End)
+
+![Donatr GIF](https://media.giphy.com/media/9DcpsU9RrbEeKJJ9aK/giphy.gif)
 
 This app was built as my final project at the Flatiron School Web Development Immersive in-person program.
 
